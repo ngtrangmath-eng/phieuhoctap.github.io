@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Website phiếu học tập Toán 6 Chương 1: Tập hợp các số tự nhiên." />
-  <title>Phiếu học tập Toán 6 - Chương 1</title>
+  <meta name="description" content="Website phiếu học tập điện tử Toán 6 với bài học tương tác, luyện tập và kiểm tra đánh giá." />
+  <title>Phiếu học tập Toán 6</title>
   <link rel="stylesheet" href="assets/site.css" />
 </head>
 <body>
@@ -16,215 +16,229 @@
           <span>Phiếu học tập Toán 6</span>
         </a>
         <nav class="topbar__nav" aria-label="Điều hướng chính">
-          <a href="#bai-hoc">Bài học</a>
-          <a href="Toan6-Chuong1-Mucluc/Toan6-Chuong1-MucLuc.html">Mục lục</a>
-          <a href="Toan6-Chuong1-OnTap/Toan6-Chuong1-OnTap.html">Ôn tập</a>
+          <a class="is-active" href="index.html">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 10.8 12 3l9 7.8v9.4a.8.8 0 0 1-.8.8h-5.1v-6.2H8.9V21H3.8a.8.8 0 0 1-.8-.8v-9.4Z"/></svg>
+            Trang chủ
+          </a>
+          <a href="#gioi-thieu">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20Zm-.9-11.1v6.2h1.8v-6.2h-1.8Zm0-4v2h1.8v-2h-1.8Z"/></svg>
+            Giới thiệu
+          </a>
+          <a href="#danh-sach-bai">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 3.5h11.8A2.2 2.2 0 0 1 19 5.7v14.8H6.4A2.4 2.4 0 0 1 4 18.1V4.5a1 1 0 0 1 1-1Zm1.4 13.2h10.8V5.7a.4.4 0 0 0-.4-.4H6.4v11.4Zm1.4-8.2h7.5v1.7H7.8V8.5Zm0 3.8h7.5V14H7.8v-1.7Z"/></svg>
+            Danh sách bài
+          </a>
+          <a href="Toan6-Chuong1-OnTap/Toan6-Chuong1-OnTap.html">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m12 3 9 4.2-9 4.2-9-4.2L12 3Zm-6 8 6 2.8 6-2.8v4.8c0 1.7-2.7 4.5-6 5.2-3.3-.7-6-3.5-6-5.2V11Z"/></svg>
+            Ôn tập
+          </a>
         </nav>
       </div>
     </header>
 
     <main class="dashboard">
-      <section class="dashboard-hero" aria-labelledby="page-title">
-        <div class="hero-copy">
-          <p class="kicker">Toán 6 - Chương 1</p>
-          <h1 id="page-title">Tập hợp các số tự nhiên</h1>
-          <p>Hệ thống phiếu học tập tương tác gồm kiến thức trọng tâm, luyện tập và kiểm tra đánh giá cho từng bài.</p>
+      <section class="hero-layout" aria-labelledby="page-title">
+        <div class="hero-panel">
+          <p class="hero-kicker">Trang học tập tương tác</p>
+          <h1 id="page-title">Phiếu học tập điện tử Toán 6</h1>
+          <p class="hero-summary">Nơi học sinh học kiến thức trọng tâm, luyện tập tương tác và tự kiểm tra sau mỗi bài học.</p>
           <div class="hero-actions">
-            <a class="button button--primary" data-continue-link href="Toan6-Chuong1-Bai1/Toan6-Chuong1-Bai1.html">Bắt đầu học</a>
-            <a class="button button--secondary" href="Toan6-Chuong1-Mucluc/Toan6-Chuong1-MucLuc.html">Mục lục chương</a>
+            <a class="button button--primary" data-continue-link href="Toan6-Chuong1-Bai1/Toan6-Chuong1-Bai1.html">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12.5 3.1c2.8 1 5.1 3.3 6.1 6.1l-4.4 4.4 1 4.1-2 2-1.8-4.2-3 3-3.1.7.7-3.1 3-3-4.2-1.8 2-2 4.1 1 4.6-4.6Z"/></svg>
+              Bắt đầu học ngay
+            </a>
+            <a class="button button--secondary" href="#danh-sach-bai">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 6h3v3H4V6Zm5 .2h11v2.2H9V6.2ZM4 11h3v3H4v-3Zm5 .2h11v2.2H9v-2.2ZM4 16h3v3H4v-3Zm5 .2h11v2.2H9v-2.2Z"/></svg>
+              Xem danh sách bài
+            </a>
           </div>
         </div>
-        <figure class="hero-media">
-          <video src="Toan6-Chuong1-Bai1/videomodau.mp4" autoplay muted loop playsinline preload="metadata"></video>
-          <figcaption>Khởi động Chương 1</figcaption>
+
+        <figure class="hero-image">
+          <img src="assets/home-hero.png" alt="Học sinh lớp 6 trong lớp học Toán với bảng hình học và ký hiệu phép tính" />
         </figure>
       </section>
 
-      <section class="stats-row" aria-label="Tổng quan học tập">
-        <div class="stat-card">
-          <span>Chương</span>
-          <strong>1</strong>
-        </div>
-        <div class="stat-card">
-          <span>Bài học</span>
-          <strong>7</strong>
-        </div>
-        <div class="stat-card">
-          <span>Ôn tập</span>
-          <strong>1</strong>
-        </div>
-        <div class="stat-card">
-          <span>Phiếu tương tác</span>
-          <strong>8</strong>
-        </div>
-      </section>
-
-      <section class="toolbar" aria-label="Bộ lọc bài học">
-        <div class="field">
-          <label for="lesson-search">Tìm bài</label>
-          <input id="lesson-search" data-search type="search" autocomplete="off" placeholder="Nhập tên bài hoặc từ khóa" />
-        </div>
-        <div class="field">
-          <label for="lesson-type">Nhóm nội dung</label>
-          <select id="lesson-type" data-filter-type>
-            <option value="all">Tất cả</option>
-            <option value="intro">Mục lục</option>
-            <option value="lesson">Bài học</option>
-            <option value="review">Ôn tập</option>
-          </select>
-        </div>
-        <div class="progress-chip" data-progress>0/8 bài đã mở</div>
-      </section>
-
-      <section id="bai-hoc" aria-labelledby="lessons-title">
-        <div class="section-heading">
+      <section class="overview-grid" aria-label="Tổng quan website">
+        <article class="stat-card stat-card--green">
+          <span class="stat-icon">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 5.2A3.2 3.2 0 0 1 7.2 2H20v16.8H7.2A3.2 3.2 0 0 0 4 22V5.2Zm3.2-1.1A1.1 1.1 0 0 0 6.1 5.2v12.1c.4-.2.8-.3 1.1-.3h10.7V4.1H7.2Z"/></svg>
+          </span>
           <div>
-            <p class="kicker">Danh sách bài</p>
-            <h2 id="lessons-title">Chương 1 - Số học</h2>
+            <span>Chương</span>
+            <strong>1</strong>
           </div>
-          <p>Tập hợp, ghi số, so sánh, phép tính và lũy thừa.</p>
-        </div>
-
-        <div class="lesson-grid">
-          <article class="lesson-card" data-lesson-card data-lesson-id="muc-luc" data-track-progress="false" data-type="intro" data-title="Mục lục Chương 1" data-keywords="gioi thieu chuong tap hop cac so tu nhien">
-            <div class="lesson-card__top">
-              <span class="lesson-number lesson-number--intro">ML</span>
-              <span class="lesson-tag lesson-tag--intro">Mục lục</span>
-            </div>
-            <h3>Mục lục Chương 1</h3>
-            <p>Bản đồ học tập cho toàn bộ chương Tập hợp các số tự nhiên.</p>
-            <div class="lesson-card__actions">
-              <a class="lesson-link" href="Toan6-Chuong1-Mucluc/Toan6-Chuong1-MucLuc.html">Mở mục lục</a>
-              <span class="visited-label">Đã mở</span>
-            </div>
-          </article>
-
-          <article class="lesson-card" data-lesson-card data-lesson-id="bai-1" data-track-progress="true" data-type="lesson" data-title="Bài 1 Tập hợp" data-keywords="tap hop phan tu ky hieu thuoc khong thuoc">
-            <div class="lesson-card__top">
-              <span class="lesson-number lesson-number--lesson">1</span>
-              <span class="lesson-tag lesson-tag--lesson">Bài học</span>
-            </div>
-            <h3>Tập hợp</h3>
-            <p>Làm quen với tập hợp, phần tử và cách mô tả một tập hợp.</p>
-            <div class="lesson-card__actions">
-              <a class="lesson-link" href="Toan6-Chuong1-Bai1/Toan6-Chuong1-Bai1.html">Mở bài học</a>
-              <span class="visited-label">Đã mở</span>
-            </div>
-          </article>
-
-          <article class="lesson-card" data-lesson-card data-lesson-id="bai-2" data-track-progress="true" data-type="lesson" data-title="Bài 2 Cách ghi số tự nhiên" data-keywords="ghi so tu nhien chu so hang lop so la ma">
-            <div class="lesson-card__top">
-              <span class="lesson-number lesson-number--lesson">2</span>
-              <span class="lesson-tag lesson-tag--lesson">Bài học</span>
-            </div>
-            <h3>Cách ghi số tự nhiên</h3>
-            <p>Đọc, viết và phân tích số tự nhiên theo hàng, lớp.</p>
-            <div class="lesson-card__actions">
-              <a class="lesson-link" href="Toan6-Chuong1-Bai2/Toan6-Chuong1-Bai2.html">Mở bài học</a>
-              <span class="visited-label">Đã mở</span>
-            </div>
-          </article>
-
-          <article class="lesson-card" data-lesson-card data-lesson-id="bai-3" data-track-progress="true" data-type="lesson" data-title="Bài 3 Thứ tự trong tập hợp các số tự nhiên" data-keywords="thu tu so sanh tia so lon hon nho hon">
-            <div class="lesson-card__top">
-              <span class="lesson-number lesson-number--lesson">3</span>
-              <span class="lesson-tag lesson-tag--lesson">Bài học</span>
-            </div>
-            <h3>Thứ tự trong tập hợp các số tự nhiên</h3>
-            <p>So sánh số tự nhiên và biểu diễn thứ tự trên tia số.</p>
-            <div class="lesson-card__actions">
-              <a class="lesson-link" href="Toan6-Chuong1-Bai3/Toan6-Chuong1-Bai3.html">Mở bài học</a>
-              <span class="visited-label">Đã mở</span>
-            </div>
-          </article>
-
-          <article class="lesson-card" data-lesson-card data-lesson-id="bai-4" data-track-progress="true" data-type="lesson" data-title="Bài 4 Phép cộng và phép trừ số tự nhiên" data-keywords="phep cong phep tru so tu nhien tinh nhanh">
-            <div class="lesson-card__top">
-              <span class="lesson-number lesson-number--lesson">4</span>
-              <span class="lesson-tag lesson-tag--lesson">Bài học</span>
-            </div>
-            <h3>Phép cộng và phép trừ số tự nhiên</h3>
-            <p>Thực hiện phép cộng, phép trừ và vận dụng tính chất cơ bản.</p>
-            <div class="lesson-card__actions">
-              <a class="lesson-link" href="Toan6-Chuong1-Bai4/Toan6-Chuong1-Bai4.html">Mở bài học</a>
-              <span class="visited-label">Đã mở</span>
-            </div>
-          </article>
-
-          <article class="lesson-card" data-lesson-card data-lesson-id="bai-5" data-track-progress="true" data-type="lesson" data-title="Bài 5 Phép nhân và phép chia số tự nhiên" data-keywords="phep nhan phep chia so tu nhien uoc boi">
-            <div class="lesson-card__top">
-              <span class="lesson-number lesson-number--lesson">5</span>
-              <span class="lesson-tag lesson-tag--lesson">Bài học</span>
-            </div>
-            <h3>Phép nhân và phép chia số tự nhiên</h3>
-            <p>Luyện nhân, chia số tự nhiên và nhận biết quan hệ chia hết.</p>
-            <div class="lesson-card__actions">
-              <a class="lesson-link" href="Toan6-Chuong1-Bai5/Toan6-Chuong1-Bai5.html">Mở bài học</a>
-              <span class="visited-label">Đã mở</span>
-            </div>
-          </article>
-
-          <article class="lesson-card" data-lesson-card data-lesson-id="bai-6" data-track-progress="true" data-type="lesson" data-title="Bài 6 Lũy thừa với số mũ tự nhiên" data-keywords="luy thua so mu co so binh phuong lap phuong">
-            <div class="lesson-card__top">
-              <span class="lesson-number lesson-number--lesson">6</span>
-              <span class="lesson-tag lesson-tag--lesson">Bài học</span>
-            </div>
-            <h3>Lũy thừa với số mũ tự nhiên</h3>
-            <p>Viết gọn tích nhiều thừa số bằng nhau và tính giá trị lũy thừa.</p>
-            <div class="lesson-card__actions">
-              <a class="lesson-link" href="Toan6-Chuong1-Bai6/Toan6-Chuong1-Bai6.html">Mở bài học</a>
-              <span class="visited-label">Đã mở</span>
-            </div>
-          </article>
-
-          <article class="lesson-card" data-lesson-card data-lesson-id="bai-7" data-track-progress="true" data-type="lesson" data-title="Bài 7 Thứ tự thực hiện các phép tính" data-keywords="thu tu thuc hien phep tinh ngoac luy thua nhan chia cong tru">
-            <div class="lesson-card__top">
-              <span class="lesson-number lesson-number--lesson">7</span>
-              <span class="lesson-tag lesson-tag--lesson">Bài học</span>
-            </div>
-            <h3>Thứ tự thực hiện các phép tính</h3>
-            <p>Áp dụng đúng thứ tự phép tính trong biểu thức có nhiều phép toán.</p>
-            <div class="lesson-card__actions">
-              <a class="lesson-link" href="Toan6-Chuong1-Bai7/Toan6-Chuong1-Bai7.html">Mở bài học</a>
-              <span class="visited-label">Đã mở</span>
-            </div>
-          </article>
-
-          <article class="lesson-card" data-lesson-card data-lesson-id="on-tap" data-track-progress="true" data-type="review" data-title="Ôn tập Chương 1" data-keywords="on tap tong ket chuong tap hop so tu nhien">
-            <div class="lesson-card__top">
-              <span class="lesson-number lesson-number--review">ÔT</span>
-              <span class="lesson-tag lesson-tag--review">Ôn tập</span>
-            </div>
-            <h3>Ôn tập Chương 1</h3>
-            <p>Tổng hợp kiến thức, luyện tập và kiểm tra cuối chương.</p>
-            <div class="lesson-card__actions">
-              <a class="lesson-link" href="Toan6-Chuong1-OnTap/Toan6-Chuong1-OnTap.html">Mở ôn tập</a>
-              <span class="visited-label">Đã mở</span>
-            </div>
-          </article>
-        </div>
-
-        <div class="empty-state" data-empty-state>Không có bài phù hợp.</div>
+        </article>
+        <article class="stat-card stat-card--blue">
+          <span class="stat-icon">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4.5 4.4A4.7 4.7 0 0 1 9.2 3H11v16H9.2a4.7 4.7 0 0 0-4.7 1.4V4.4Zm8.5-1.4h1.8a4.7 4.7 0 0 1 4.7 1.4v16a4.7 4.7 0 0 0-4.7-1.4H13V3Z"/></svg>
+          </span>
+          <div>
+            <span>Bài học</span>
+            <strong>7</strong>
+          </div>
+        </article>
+        <article class="stat-card stat-card--violet">
+          <span class="stat-icon">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15.7 3.2 20.8 8 8.3 20.5l-5.2 1.1 1.1-5.2L15.7 3.2Zm-.1 3.2-9.4 9.9-.4 2 2-.4 9.6-9.6-1.8-1.9Z"/></svg>
+          </span>
+          <div>
+            <span>Ôn tập</span>
+            <strong>1</strong>
+          </div>
+        </article>
+        <article class="stat-card stat-card--orange">
+          <span class="stat-icon">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 2.8h8.8L20 8v13.2H6V2.8Zm8 1.9v4h4l-4-4ZM8 5v14h10V10.6h-6V5H8Zm2 8h6v1.8h-6V13Zm0 3h6v1.8h-6V16Z"/></svg>
+          </span>
+          <div>
+            <span>Phiếu tương tác</span>
+            <strong>9</strong>
+          </div>
+        </article>
+        <article id="gioi-thieu" class="intro-card">
+          <span class="intro-icon">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 4.8 12.1c-.8.8-1.3 1.5-1.5 2.4H8.7c-.2-.9-.7-1.6-1.5-2.4A7 7 0 0 1 12 2Zm-2.9 16.2h5.8v2H9.1v-2Zm.7 3.1h4.4v1.5H9.8v-1.5Z"/></svg>
+          </span>
+          <div>
+            <h2>Giới thiệu về trang web</h2>
+            <p>Trang web Phiếu học tập Toán 6 được xây dựng nhằm hỗ trợ học sinh tự học môn Toán một cách chủ động, nhẹ nhàng và hiệu quả. Mỗi bài học gồm ba phần chính: Kiến thức trọng tâm, Luyện tập và Kiểm tra đánh giá.</p>
+          </div>
+        </article>
       </section>
 
-      <section aria-labelledby="resources-title">
-        <div class="section-heading">
-          <div>
-            <p class="kicker">Tài liệu nguồn</p>
-            <h2 id="resources-title">Markdown và quy trình</h2>
+      <section id="danh-sach-bai" class="lessons-section" aria-labelledby="lessons-title">
+        <div class="lessons-toolbar">
+          <h2 id="lessons-title">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4.5 4.4A4.7 4.7 0 0 1 9.2 3H11v16H9.2a4.7 4.7 0 0 0-4.7 1.4V4.4Zm8.5-1.4h1.8a4.7 4.7 0 0 1 4.7 1.4v16a4.7 4.7 0 0 0-4.7-1.4H13V3Z"/></svg>
+            Danh sách bài học
+          </h2>
+          <div class="filter-bar">
+            <label class="search-field" for="lesson-search">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M10.5 4a6.5 6.5 0 0 1 5.1 10.5l4.1 4.1-1.6 1.6-4.1-4.1A6.5 6.5 0 1 1 10.5 4Zm0 2.2a4.3 4.3 0 1 0 0 8.6 4.3 4.3 0 0 0 0-8.6Z"/></svg>
+              <input id="lesson-search" data-search type="search" autocomplete="off" placeholder="Nhập tên bài hoặc từ khóa" />
+            </label>
+            <label class="chapter-filter" for="chapter-filter">
+              <span>Chọn chương</span>
+              <select id="chapter-filter" data-filter-chapter>
+                <option value="all">Tất cả chương</option>
+                <option value="chapter-1">Chương 1</option>
+              </select>
+            </label>
           </div>
         </div>
-        <div class="resources">
-          <a class="resource-link" href="README.md">README</a>
-          <a class="resource-link" href="curriculum.md">Mục lục nội dung</a>
-          <a class="resource-link" href="templates/html_structure.md">Cấu trúc HTML</a>
+
+        <div class="chapter-panel" data-chapter-panel="chapter-1">
+          <header class="chapter-header">
+            <span class="chapter-number">1</span>
+            <div>
+              <h3>Chương 1. Số học</h3>
+              <p>Tập hợp, ghi số, so sánh, phép tính và lũy thừa.</p>
+            </div>
+            <span class="chapter-caret" aria-hidden="true"></span>
+          </header>
+
+          <div class="lesson-grid">
+            <article class="study-card study-card--intro" data-lesson-card data-lesson-id="muc-luc" data-track-progress="false" data-type="intro" data-chapter="chapter-1" data-title="Mục lục Chương 1" data-keywords="gioi thieu chuong tap hop cac so tu nhien">
+              <span class="study-marker">
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 5h4v4H4V5Zm6 .4h10v3.2H10V5.4ZM4 11h4v4H4v-4Zm6 .4h10v3.2H10v-3.2ZM4 17h4v4H4v-4Zm6 .4h10v3.2H10v-3.2Z"/></svg>
+              </span>
+              <div class="study-copy">
+                <h4>Mục lục chương 1</h4>
+                <a href="Toan6-Chuong1-Mucluc/Toan6-Chuong1-MucLuc.html">Vào học</a>
+              </div>
+              <span class="study-badge study-badge--intro">Mục lục</span>
+            </article>
+
+            <article class="study-card" data-lesson-card data-lesson-id="bai-1" data-track-progress="true" data-type="lesson" data-chapter="chapter-1" data-title="Bài 1 Tập hợp" data-keywords="tap hop phan tu ky hieu thuoc khong thuoc">
+              <span class="study-marker">1</span>
+              <div class="study-copy">
+                <h4>Bài 1. Tập hợp</h4>
+                <a href="Toan6-Chuong1-Bai1/Toan6-Chuong1-Bai1.html">Vào học</a>
+              </div>
+              <span class="study-badge">Bài học</span>
+            </article>
+
+            <article class="study-card" data-lesson-card data-lesson-id="bai-2" data-track-progress="true" data-type="lesson" data-chapter="chapter-1" data-title="Bài 2 Cách ghi số tự nhiên" data-keywords="ghi so tu nhien chu so hang lop so la ma">
+              <span class="study-marker">2</span>
+              <div class="study-copy">
+                <h4>Bài 2. Cách ghi số tự nhiên</h4>
+                <a href="Toan6-Chuong1-Bai2/Toan6-Chuong1-Bai2.html">Vào học</a>
+              </div>
+              <span class="study-badge">Bài học</span>
+            </article>
+
+            <article class="study-card" data-lesson-card data-lesson-id="bai-3" data-track-progress="true" data-type="lesson" data-chapter="chapter-1" data-title="Bài 3 Thứ tự trong tập hợp các số tự nhiên" data-keywords="thu tu so sanh tia so lon hon nho hon">
+              <span class="study-marker">3</span>
+              <div class="study-copy">
+                <h4>Bài 3. Thứ tự trong tập hợp các số tự nhiên</h4>
+                <a href="Toan6-Chuong1-Bai3/Toan6-Chuong1-Bai3.html">Vào học</a>
+              </div>
+              <span class="study-badge">Bài học</span>
+            </article>
+
+            <article class="study-card" data-lesson-card data-lesson-id="bai-4" data-track-progress="true" data-type="lesson" data-chapter="chapter-1" data-title="Bài 4 Phép cộng và phép trừ số tự nhiên" data-keywords="phep cong phep tru so tu nhien tinh nhanh">
+              <span class="study-marker">4</span>
+              <div class="study-copy">
+                <h4>Bài 4. Phép cộng và phép trừ số tự nhiên</h4>
+                <a href="Toan6-Chuong1-Bai4/Toan6-Chuong1-Bai4.html">Vào học</a>
+              </div>
+              <span class="study-badge">Bài học</span>
+            </article>
+
+            <article class="study-card" data-lesson-card data-lesson-id="bai-5" data-track-progress="true" data-type="lesson" data-chapter="chapter-1" data-title="Bài 5 Phép nhân và phép chia số tự nhiên" data-keywords="phep nhan phep chia so tu nhien uoc boi">
+              <span class="study-marker">5</span>
+              <div class="study-copy">
+                <h4>Bài 5. Phép nhân và phép chia số tự nhiên</h4>
+                <a href="Toan6-Chuong1-Bai5/Toan6-Chuong1-Bai5.html">Vào học</a>
+              </div>
+              <span class="study-badge">Bài học</span>
+            </article>
+
+            <article class="study-card" data-lesson-card data-lesson-id="bai-6" data-track-progress="true" data-type="lesson" data-chapter="chapter-1" data-title="Bài 6 Lũy thừa với số mũ tự nhiên" data-keywords="luy thua so mu co so binh phuong lap phuong">
+              <span class="study-marker">6</span>
+              <div class="study-copy">
+                <h4>Bài 6. Lũy thừa với số mũ tự nhiên</h4>
+                <a href="Toan6-Chuong1-Bai6/Toan6-Chuong1-Bai6.html">Vào học</a>
+              </div>
+              <span class="study-badge">Bài học</span>
+            </article>
+
+            <article class="study-card" data-lesson-card data-lesson-id="bai-7" data-track-progress="true" data-type="lesson" data-chapter="chapter-1" data-title="Bài 7 Thứ tự thực hiện các phép tính" data-keywords="thu tu thuc hien phep tinh ngoac luy thua nhan chia cong tru">
+              <span class="study-marker">7</span>
+              <div class="study-copy">
+                <h4>Bài 7. Thứ tự thực hiện các phép tính</h4>
+                <a href="Toan6-Chuong1-Bai7/Toan6-Chuong1-Bai7.html">Vào học</a>
+              </div>
+              <span class="study-badge">Bài học</span>
+            </article>
+
+            <article class="study-card study-card--review" data-lesson-card data-lesson-id="on-tap" data-track-progress="true" data-type="review" data-chapter="chapter-1" data-title="Ôn tập Chương 1" data-keywords="on tap tong ket chuong tap hop so tu nhien">
+              <span class="study-marker">
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m12 3 9 4.2-9 4.2-9-4.2L12 3Zm-6 8 6 2.8 6-2.8v4.8c0 1.7-2.7 4.5-6 5.2-3.3-.7-6-3.5-6-5.2V11Z"/></svg>
+              </span>
+              <div class="study-copy">
+                <h4>Ôn tập chương 1</h4>
+                <a href="Toan6-Chuong1-OnTap/Toan6-Chuong1-OnTap.html">Vào học</a>
+              </div>
+              <span class="study-badge study-badge--review">Ôn tập</span>
+            </article>
+          </div>
+          <div class="empty-state" data-empty-state>Không có bài phù hợp.</div>
+        </div>
+
+        <div class="chapter-panel chapter-panel--collapsed" aria-label="Chương 2 đang cập nhật">
+          <header class="chapter-header">
+            <span class="chapter-number chapter-number--blue">2</span>
+            <div>
+              <h3>Chương 2. Tính chia hết trong tập hợp số tự nhiên</h3>
+              <p>Quan hệ chia hết, dấu hiệu chia hết, số nguyên tố, ước chung, bội chung...</p>
+            </div>
+            <span class="chapter-caret chapter-caret--closed" aria-hidden="true"></span>
+          </header>
         </div>
       </section>
     </main>
-
-    <footer class="site-footer">
-      <span>Phiếu học tập Toán 6 - Chương 1.</span>
-    </footer>
   </div>
 
   <script src="assets/site.js"></script>

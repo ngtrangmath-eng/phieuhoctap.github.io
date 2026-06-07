@@ -4,6 +4,7 @@
   const cards = Array.from(document.querySelectorAll("[data-lesson-card]"));
   const searchInput = document.querySelector("[data-search]");
   const typeSelect = document.querySelector("[data-filter-type]");
+  const chapterSelect = document.querySelector("[data-filter-chapter]");
   const emptyState = document.querySelector("[data-empty-state]");
   const progressText = document.querySelector("[data-progress]");
   const continueLink = document.querySelector("[data-continue-link]");
@@ -30,15 +31,18 @@
   function updateCards() {
     const query = normalize(searchInput ? searchInput.value.trim() : "");
     const type = typeSelect ? typeSelect.value : "all";
+    const chapter = chapterSelect ? chapterSelect.value : "all";
     let shown = 0;
 
     cards.forEach((card) => {
       const title = normalize(card.dataset.title || "");
       const keywords = normalize(card.dataset.keywords || "");
       const cardType = card.dataset.type || "lesson";
+      const cardChapter = card.dataset.chapter || "chapter-1";
       const matchesQuery = !query || title.includes(query) || keywords.includes(query);
       const matchesType = type === "all" || type === cardType;
-      const visible = matchesQuery && matchesType;
+      const matchesChapter = chapter === "all" || chapter === cardChapter;
+      const visible = matchesQuery && matchesType && matchesChapter;
 
       card.classList.toggle("is-hidden", !visible);
       if (visible) shown += 1;
@@ -87,6 +91,7 @@
 
   if (searchInput) searchInput.addEventListener("input", updateCards);
   if (typeSelect) typeSelect.addEventListener("change", updateCards);
+  if (chapterSelect) chapterSelect.addEventListener("change", updateCards);
 
   applyProgress();
   updateCards();
