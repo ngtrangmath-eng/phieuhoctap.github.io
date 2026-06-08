@@ -62,24 +62,28 @@
           <img src="assets/learning-cards-static.png" alt="Ba thẻ minh họa: Kiến thức trọng tâm, Luyện tập, Kiểm tra kiến thức" />
         </figure>
 
-        <section id="tien-do" class="benefit-strip" aria-label="Lợi ích học tập">
-          <div>
-            <span class="benefit-icon benefit-icon--target">
+        <section id="tien-do" class="progress-panel" aria-labelledby="progress-title">
+          <div class="progress-summary">
+            <span class="progress-icon">
               <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10h-2.2A7.8 7.8 0 1 1 12 4.2V2Zm8.5 1.5-4.7 4.7H13v2.2h1.9l4.8-4.7v3.2H22V3.5h-1.5ZM12 7a5 5 0 1 0 5 5h-2.2A2.8 2.8 0 1 1 12 9.2V7Z"/></svg>
             </span>
-            <p><strong>Học đúng trọng tâm</strong><span>Hiểu sâu, nhớ lâu</span></p>
+            <div>
+              <h2 id="progress-title">Tiến độ học tập thực tế</h2>
+              <p data-progress-status>Chưa mở bài học nào.</p>
+            </div>
           </div>
-          <div>
-            <span class="benefit-icon benefit-icon--chart">
-              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 18h3V9H4v9Zm5 0h3V5H9v13Zm5 0h3v-6h-3v6Zm5 0h1.5v2H3.5v-2H19Z"/></svg>
-            </span>
-            <p><strong>Luyện tập đa dạng</strong><span>Củng cố mỗi ngày</span></p>
+          <div class="progress-meter" aria-label="Tiến độ hoàn thành chương 1">
+            <div class="progress-meter__track">
+              <span data-progress-bar style="width: 0%"></span>
+            </div>
+            <div class="progress-meter__meta">
+              <strong data-progress>0/8 bài đã mở</strong>
+              <span data-progress-percent>0%</span>
+            </div>
           </div>
-          <div>
-            <span class="benefit-icon benefit-icon--medal">
-              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 2.8h8l1.2 4.1a7 7 0 1 1-10.4 0L8 2.8Zm2.1 2-.5 1.7a7 7 0 0 1 4.8 0l-.5-1.7h-3.8ZM12 9.2l1 2.1 2.3.3-1.7 1.6.4 2.3-2-1.1-2 1.1.4-2.3-1.7-1.6 2.3-.3 1-2.1Z"/></svg>
-            </span>
-            <p><strong data-progress>0/8 bài đã mở</strong><span>Theo dõi tiến bộ</span></p>
+          <div class="progress-actions">
+            <span data-progress-last>Bài gần nhất: chưa có</span>
+            <a data-continue-link href="Toan6-Chuong1-Bai1/Toan6-Chuong1-Bai1.html">Bắt đầu học</a>
           </div>
         </section>
       </div>

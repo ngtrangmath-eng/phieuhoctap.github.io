@@ -7,7 +7,11 @@
   const chapterSelect = document.querySelector("[data-filter-chapter]");
   const emptyState = document.querySelector("[data-empty-state]");
   const progressText = document.querySelector("[data-progress]");
-  const continueLink = document.querySelector("[data-continue-link]");
+  const progressPercent = document.querySelector("[data-progress-percent]");
+  const progressBar = document.querySelector("[data-progress-bar]");
+  const progressStatus = document.querySelector("[data-progress-status]");
+  const progressLast = document.querySelector("[data-progress-last]");
+  const continueLinks = Array.from(document.querySelectorAll("[data-continue-link]"));
 
   function readVisited() {
     try {
@@ -57,22 +61,48 @@
     const visited = readVisited();
     const lessonCards = cards.filter((card) => card.dataset.trackProgress === "true");
     const viewed = lessonCards.filter((card) => visited.has(card.dataset.lessonId));
+    const total = lessonCards.length;
+    const percent = total ? Math.round((viewed.length / total) * 100) : 0;
 
     cards.forEach((card) => {
       card.classList.toggle("is-visited", visited.has(card.dataset.lessonId));
     });
 
     if (progressText) {
-      progressText.textContent = `${viewed.length}/${lessonCards.length} bài đã mở`;
+      progressText.textContent = `${viewed.length}/${total} bài đã mở`;
+    }
+
+    if (progressPercent) {
+      progressPercent.textContent = `${percent}%`;
+    }
+
+    if (progressBar) {
+      progressBar.style.width = `${percent}%`;
+    }
+
+    if (progressStatus) {
+      if (viewed.length === 0) {
+        progressStatus.textContent = "Chưa mở bài học nào.";
+      } else if (viewed.length === total) {
+        progressStatus.textContent = "Đã mở đủ các bài trong chương.";
+      } else {
+        progressStatus.textContent = `Đang học chương 1, còn ${total - viewed.length} bài chưa mở.`;
+      }
     }
 
     const lastLessonId = localStorage.getItem(lastKey);
     const lastCard = cards.find((card) => card.dataset.lessonId === lastLessonId);
-    if (continueLink && lastCard) {
+    if (progressLast) {
+      progressLast.textContent = lastCard ? `Bài gần nhất: ${lastCard.dataset.title || "bài học"}` : "Bài gần nhất: chưa có";
+    }
+
+    if (continueLinks.length && lastCard) {
       const link = lastCard.querySelector("a[href]");
       if (link) {
-        continueLink.href = link.getAttribute("href");
-        continueLink.textContent = "Tiếp tục học";
+        continueLinks.forEach((continueLink) => {
+          continueLink.href = link.getAttribute("href");
+          continueLink.textContent = "Tiếp tục học";
+        });
       }
     }
   }
