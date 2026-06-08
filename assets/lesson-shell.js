@@ -1,13 +1,6 @@
 (function () {
   const pages = [
     {
-      id: "muc-luc",
-      label: "Mục lục",
-      title: "Mục lục Chương 1",
-      href: "../Toan6-Chuong1-Mucluc/Toan6-Chuong1-MucLuc.html",
-      trackProgress: false
-    },
-    {
       id: "bai-1",
       label: "Bài 1",
       title: "Tập hợp",
