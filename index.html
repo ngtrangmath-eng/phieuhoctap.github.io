@@ -36,7 +36,7 @@
             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2.5a4.8 4.8 0 0 1 4.8 4.8c0 1.7-.9 3.2-2.2 4.1 2.9.9 5 3.2 5.6 6.1.2.9-.5 1.8-1.4 1.8H5.2c-.9 0-1.6-.9-1.4-1.8.6-2.9 2.7-5.2 5.6-6.1a4.8 4.8 0 0 1-2.2-4.1A4.8 4.8 0 0 1 12 2.5Zm0 2.2a2.6 2.6 0 1 0 0 5.2 2.6 2.6 0 0 0 0-5.2Zm0 8.5c-2.7 0-4.9 1.6-5.7 3.9h11.4c-.8-2.3-3-3.9-5.7-3.9Z"/></svg>
             Đăng nhập
           </a>
-          <a href="#huong-dan">
+          <a href="#huong-dan" data-open-guide>
             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-.9 14.8h1.8v1.8h-1.8v-1.8Zm.1-2.8c0-1.3.7-2 1.6-2.6.8-.5 1.4-.9 1.4-1.8 0-1-.8-1.6-1.9-1.6-1 0-1.8.5-2.5 1.2L8.5 7.8A5 5 0 0 1 12.4 6c2.4 0 4.1 1.3 4.1 3.4 0 1.8-1.1 2.6-2.2 3.3-.8.5-1.3.9-1.3 1.8v.5h-1.8V14Z"/></svg>
             Hướng dẫn
           </a>
@@ -297,12 +297,38 @@
       </div>
     </section>
 
-    <section id="huong-dan" class="guide-section" aria-label="Hướng dẫn học tập">
-      <div>
-        <strong>Học theo thứ tự</strong>
-        <span>Mở Bài 1 đến Bài 7, sau đó làm Ôn tập chương 1.</span>
+    <section id="huong-dan" class="guide-section" aria-labelledby="guide-title" hidden>
+      <div class="guide-copy">
+        <p class="section-kicker">Hướng dẫn học tập</p>
+        <h2 id="guide-title">Cách học trên trang web</h2>
+        <p>Mỗi bài học gồm kiến thức trọng tâm, luyện tập và kiểm tra đánh giá. Em nên học lần lượt để theo dõi tiến độ chính xác.</p>
       </div>
-      <a data-continue-link href="Toan6-Chuong1-Bai1/Toan6-Chuong1-Bai1.html">Bắt đầu học</a>
+      <div class="guide-steps" aria-label="Các bước học tập">
+        <article>
+          <span>1</span>
+          <strong>Đăng nhập</strong>
+          <p>Tạo tài khoản hoặc đăng nhập để lưu tên học sinh và tiến độ học trên thiết bị.</p>
+        </article>
+        <article>
+          <span>2</span>
+          <strong>Học theo thứ tự</strong>
+          <p>Bắt đầu từ Bài 1 đến Bài 7, sau đó hoàn thành Ôn tập Chương 1.</p>
+        </article>
+        <article>
+          <span>3</span>
+          <strong>Làm đủ 3 phần</strong>
+          <p>Đọc Phần A, tự làm Phần B, rồi hoàn thành Phần C để kiểm tra mức độ hiểu bài.</p>
+        </article>
+        <article>
+          <span>4</span>
+          <strong>Theo dõi tiến độ</strong>
+          <p>Xem số bài đã mở, huy hiệu nỗ lực và chuỗi ngày học ở khối tiến độ trên trang chủ.</p>
+        </article>
+      </div>
+      <div class="guide-actions">
+        <button type="button" data-open-auth>Đăng nhập</button>
+        <a data-continue-link href="Toan6-Chuong1-Bai1/Toan6-Chuong1-Bai1.html">Bắt đầu học</a>
+      </div>
     </section>
   </main>
 

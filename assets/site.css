@@ -469,7 +469,8 @@ h1 span {
   grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1.28fr);
 }
 
-.auth-section[hidden] {
+.auth-section[hidden],
+.guide-section[hidden] {
   display: none;
 }
 
@@ -837,35 +838,88 @@ h1 span {
 }
 
 .guide-section {
-  align-items: center;
-  display: flex;
-  gap: 18px;
-  justify-content: space-between;
+  display: grid;
+  gap: 20px;
 }
 
-.guide-section strong,
-.guide-section span {
-  display: block;
-}
-
-.guide-section strong {
+.guide-copy h2 {
   color: #09235a;
-  font-size: 1.1rem;
+  font-size: clamp(1.65rem, 2.4vw, 2.25rem);
+  line-height: 1.12;
+  margin: 0 0 10px;
 }
 
-.guide-section span {
+.guide-copy p:last-child {
   color: #607598;
+  margin: 0;
+  max-width: 760px;
 }
 
-.guide-section a {
+.guide-steps {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.guide-steps article {
+  background: linear-gradient(135deg, #f8fbff, #ffffff);
+  border: 1px solid #c8d8f0;
+  border-radius: 16px;
+  min-width: 0;
+  padding: 16px;
+}
+
+.guide-steps article > span {
+  align-items: center;
+  background: linear-gradient(135deg, var(--blue), var(--cyan));
+  border-radius: 50%;
+  color: #ffffff;
+  display: inline-flex;
+  font-weight: 900;
+  height: 34px;
+  justify-content: center;
+  margin-bottom: 12px;
+  width: 34px;
+}
+
+.guide-steps strong {
+  color: #09235a;
+  display: block;
+  font-size: 1rem;
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+
+.guide-steps p {
+  color: #607598;
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+.guide-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.guide-actions a,
+.guide-actions button {
   background: var(--blue);
+  border: 0;
   border-radius: var(--radius);
   color: #ffffff;
+  cursor: pointer;
+  font-size: 0.95rem;
   font-weight: 900;
   padding: 12px 18px;
 }
 
-.guide-section a:hover {
+.guide-actions button {
+  font-family: inherit;
+}
+
+.guide-actions a:hover,
+.guide-actions button:hover {
   background: var(--blue-dark);
 }
 
@@ -904,6 +958,10 @@ h1 span {
   .lesson-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .guide-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 980px) {
@@ -933,6 +991,7 @@ h1 span {
   .auth-section,
   .section-header,
   .filter-bar,
+  .guide-steps,
   .lesson-grid {
     grid-template-columns: 1fr;
   }

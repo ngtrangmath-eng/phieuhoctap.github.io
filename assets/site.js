@@ -20,6 +20,8 @@
   const authLink = document.querySelector("[data-auth-link]");
   const authSection = document.querySelector("#dang-nhap");
   const openAuthLinks = Array.from(document.querySelectorAll("[data-open-auth]"));
+  const guideSection = document.querySelector("#huong-dan");
+  const openGuideLinks = Array.from(document.querySelectorAll("[data-open-guide]"));
   const logoutButton = document.querySelector("[data-logout]");
   const authMessage = document.querySelector("[data-auth-message]");
   const authModeButtons = Array.from(document.querySelectorAll("[data-auth-mode]"));
@@ -304,6 +306,14 @@
     }
   }
 
+  function revealGuideSection() {
+    if (!guideSection) return;
+    guideSection.hidden = false;
+    window.requestAnimationFrame(() => {
+      guideSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+
   async function handleRegister(form) {
     const formData = new FormData(form);
     const username = String(formData.get("username") || "").trim();
@@ -417,6 +427,13 @@
     });
   });
 
+  openGuideLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      revealGuideSection();
+    });
+  });
+
   authForms.forEach((form) => {
     form.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -439,10 +456,6 @@
   if (searchInput) searchInput.addEventListener("input", updateCards);
   if (typeSelect) typeSelect.addEventListener("change", updateCards);
   if (chapterSelect) chapterSelect.addEventListener("change", updateCards);
-
-  if (window.location.hash === "#dang-nhap") {
-    revealAuthSection("login");
-  }
 
   applyUserState();
   updateCards();
