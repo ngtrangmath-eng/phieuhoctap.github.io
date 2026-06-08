@@ -67,6 +67,7 @@
 
   const legacyPrefix = "phieuhoctap.chuong1";
   const currentAccountKey = "phieuhoctap.auth.current";
+  const openAuthRequestKey = "phieuhoctap.openAuth";
 
   function getProgressPrefix() {
     const accountKey = localStorage.getItem(currentAccountKey) || "";
@@ -124,6 +125,74 @@
     return link;
   }
 
+  function isLoggedIn() {
+    return Boolean(localStorage.getItem(currentAccountKey));
+  }
+
+  function ensureLoginNotice() {
+    let notice = document.querySelector(".login-required-panel");
+    if (notice) return notice;
+
+    const partC = document.getElementById("part-c");
+    if (!partC || !partC.parentNode) return null;
+
+    notice = document.createElement("section");
+    notice.className = "login-required-panel";
+    notice.hidden = true;
+
+    const title = document.createElement("h2");
+    title.textContent = "Cần đăng nhập để làm kiểm tra";
+
+    const message = document.createElement("p");
+    message.textContent = "Em hãy đăng nhập tài khoản học sinh trước khi vào Phần C - Kiểm tra đánh giá.";
+
+    const loginLink = createLink("Về trang chủ đăng nhập", "../index.html", "login-required-panel__button");
+    loginLink.addEventListener("click", () => {
+      sessionStorage.setItem(openAuthRequestKey, "1");
+    });
+
+    notice.append(title, message, loginLink);
+    partC.parentNode.insertBefore(notice, partC);
+    return notice;
+  }
+
+  function showLoginNotice() {
+    const notice = ensureLoginNotice();
+    if (!notice) return;
+    notice.hidden = false;
+    notice.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function lockAssessmentUntilLogin() {
+    const partC = document.getElementById("part-c");
+    if (!partC || isLoggedIn()) return;
+
+    const partCTab = document.querySelector('[data-tab="part-c"]');
+    if (partCTab) {
+      partCTab.classList.add("is-locked");
+      partCTab.setAttribute("aria-disabled", "true");
+      partCTab.title = "Em cần đăng nhập để làm kiểm tra.";
+    }
+
+    partC.classList.add("is-login-locked");
+    partC.querySelectorAll("input, textarea, select, button").forEach((control) => {
+      control.disabled = true;
+      control.setAttribute("aria-disabled", "true");
+    });
+
+    document.addEventListener(
+      "click",
+      (event) => {
+        const trigger = event.target.closest('[data-tab="part-c"], [data-tab-jump="part-c"]');
+        if (!trigger || isLoggedIn()) return;
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        showLoginNotice();
+      },
+      true
+    );
+  }
+
   function mount() {
     const currentId = document.body ? document.body.dataset.lessonId : "";
     const currentIndex = pages.findIndex((page) => page.id === currentId);
@@ -170,6 +239,7 @@
     inner.append(brand, nav);
     bar.append(inner);
     document.body.prepend(bar);
+    lockAssessmentUntilLogin();
   }
 
   if (document.readyState === "loading") {

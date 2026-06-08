@@ -2,6 +2,7 @@
   const legacyPrefix = "phieuhoctap.chuong1";
   const accountsKey = "phieuhoctap.accounts";
   const currentAccountKey = "phieuhoctap.auth.current";
+  const openAuthRequestKey = "phieuhoctap.openAuth";
   const cards = Array.from(document.querySelectorAll("[data-lesson-card]"));
   const searchInput = document.querySelector("[data-search]");
   const typeSelect = document.querySelector("[data-filter-type]");
@@ -18,10 +19,16 @@
   const continueLinks = Array.from(document.querySelectorAll("[data-continue-link]"));
   const studentName = document.querySelector("[data-student-name]");
   const authLink = document.querySelector("[data-auth-link]");
+  const homeContent = document.querySelector("[data-home-content]");
   const authSection = document.querySelector("#dang-nhap");
   const openAuthLinks = Array.from(document.querySelectorAll("[data-open-auth]"));
+  const courseSection = document.querySelector("#danh-sach-bai");
+  const openCourseLinks = Array.from(document.querySelectorAll("[data-open-course]"));
+  const progressSection = document.querySelector("#chuoi-hoc-tap");
+  const openProgressLinks = Array.from(document.querySelectorAll("[data-open-progress]"));
   const guideSection = document.querySelector("#huong-dan");
   const openGuideLinks = Array.from(document.querySelectorAll("[data-open-guide]"));
+  const showHomeLinks = Array.from(document.querySelectorAll("[data-show-home]"));
   const logoutButton = document.querySelector("[data-logout]");
   const authMessage = document.querySelector("[data-auth-message]");
   const authModeButtons = Array.from(document.querySelectorAll("[data-auth-mode]"));
@@ -294,7 +301,51 @@
     setAuthMessage("", false);
   }
 
+  function setActiveNav(target) {
+    document.querySelectorAll(".main-nav a").forEach((link) => {
+      link.classList.toggle("is-active", link.dataset.navTarget === target);
+    });
+  }
+
+  function showHomeView() {
+    document.body.classList.remove("is-compact-view");
+    if (homeContent) homeContent.hidden = false;
+    if (courseSection) courseSection.hidden = true;
+    if (guideSection) guideSection.hidden = true;
+    if (authSection) authSection.hidden = true;
+    setActiveNav("home");
+    window.requestAnimationFrame(() => {
+      document.getElementById("trang-chu")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+
+  function showProgressView() {
+    showHomeView();
+    window.requestAnimationFrame(() => {
+      progressSection?.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  }
+
+  function showCourseView() {
+    document.body.classList.add("is-compact-view");
+    if (homeContent) homeContent.hidden = true;
+    if (authSection) authSection.hidden = true;
+    if (guideSection) guideSection.hidden = true;
+    if (courseSection) {
+      courseSection.hidden = false;
+      window.requestAnimationFrame(() => {
+        courseSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+    setActiveNav("course");
+    updateCards();
+  }
+
   function revealAuthSection(mode) {
+    document.body.classList.remove("is-compact-view");
+    if (homeContent) homeContent.hidden = false;
+    if (courseSection) courseSection.hidden = true;
+    if (guideSection) guideSection.hidden = true;
     if (authSection) {
       authSection.hidden = false;
       window.requestAnimationFrame(() => {
@@ -304,14 +355,20 @@
     if (mode) {
       switchAuthMode(mode);
     }
+    setActiveNav("auth");
   }
 
   function revealGuideSection() {
     if (!guideSection) return;
+    document.body.classList.add("is-compact-view");
+    if (homeContent) homeContent.hidden = true;
+    if (courseSection) courseSection.hidden = true;
+    if (authSection) authSection.hidden = true;
     guideSection.hidden = false;
     window.requestAnimationFrame(() => {
       guideSection.scrollIntoView({ behavior: "smooth", block: "start" });
     });
+    setActiveNav("guide");
   }
 
   async function handleRegister(form) {
@@ -427,10 +484,31 @@
     });
   });
 
+  openCourseLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      showCourseView();
+    });
+  });
+
+  openProgressLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      showProgressView();
+    });
+  });
+
   openGuideLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
       event.preventDefault();
       revealGuideSection();
+    });
+  });
+
+  showHomeLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      showHomeView();
     });
   });
 
@@ -459,4 +537,9 @@
 
   applyUserState();
   updateCards();
+
+  if (sessionStorage.getItem(openAuthRequestKey) === "1") {
+    sessionStorage.removeItem(openAuthRequestKey);
+    revealAuthSection("login");
+  }
 })();

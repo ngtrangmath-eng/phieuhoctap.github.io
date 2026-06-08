@@ -85,6 +85,10 @@ svg {
   position: relative;
 }
 
+body.is-compact-view .ai-board {
+  min-height: auto;
+}
+
 .board-glow {
   background:
     radial-gradient(circle at 58% 24%, rgba(255, 255, 255, 0.65), transparent 22%),
@@ -227,11 +231,14 @@ svg {
 
 .board-content {
   display: grid;
-  grid-template-rows: auto auto auto;
   justify-items: center;
-  padding: 48px 48px 58px 430px;
+  padding: 40px 48px 46px 430px;
   position: relative;
   z-index: 1;
+}
+
+.board-content[hidden] {
+  display: none;
 }
 
 .hero-center {
@@ -266,8 +273,8 @@ h1 span {
 }
 
 .learning-cards-image {
-  margin: 34px auto 0;
-  max-width: 920px;
+  margin: 18px auto 0;
+  max-width: 620px;
   width: 100%;
 }
 
@@ -462,6 +469,12 @@ h1 span {
   grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1.28fr);
 }
 
+.intro-video-section--home {
+  margin-top: 24px;
+  max-width: 980px;
+  width: 100%;
+}
+
 .auth-section {
   align-items: start;
   display: grid;
@@ -470,6 +483,7 @@ h1 span {
 }
 
 .auth-section[hidden],
+.course-section[hidden],
 .guide-section[hidden] {
   display: none;
 }
@@ -611,6 +625,22 @@ h1 span {
   gap: 18px;
   justify-content: space-between;
   margin-bottom: 16px;
+}
+
+.section-back {
+  background: #eaf3ff;
+  border: 1px solid #c8d8f0;
+  border-radius: var(--radius);
+  color: var(--blue-dark);
+  cursor: pointer;
+  font-size: 0.92rem;
+  font-weight: 900;
+  min-height: 42px;
+  padding: 0 14px;
+}
+
+.section-back:hover {
+  background: #dcecff;
 }
 
 .section-kicker {

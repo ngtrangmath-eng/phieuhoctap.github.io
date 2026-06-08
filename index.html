@@ -9,7 +9,7 @@
 </head>
 <body>
   <main class="app-page">
-    <section class="ai-board" aria-labelledby="page-title">
+    <section id="trang-chu" class="ai-board" aria-labelledby="page-title">
       <div class="board-glow" aria-hidden="true"></div>
       <header class="board-nav">
         <a class="brand" href="index.html" aria-label="Trang chủ Phiếu học tập Toán 6">
@@ -20,23 +20,23 @@
           </span>
         </a>
         <nav class="main-nav" aria-label="Điều hướng chính">
-          <a class="is-active" href="index.html">
+          <a class="is-active" href="#trang-chu" data-show-home data-nav-target="home">
             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 10.8 12 3l9 7.8v9.4a.8.8 0 0 1-.8.8h-5.1v-6.2H8.9V21H3.8a.8.8 0 0 1-.8-.8v-9.4Z"/></svg>
             Trang chủ
           </a>
-          <a href="Toan6-Chuong1-Bai1/Toan6-Chuong1-Bai1.html#part-b">
+          <a href="#danh-sach-bai" data-open-course data-nav-target="course">
             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 2.8h12v18.4H6V2.8Zm2.2 2.1V19h7.6V4.9H8.2Zm1.2 2.4h5.2V9H9.4V7.3Zm0 3.6h5.2v1.7H9.4v-1.7Zm0 3.6h4v1.7h-4v-1.7Z"/></svg>
-            Bài tập
+            Vào học
           </a>
-          <a href="#chuoi-hoc-tap">
+          <a href="#chuoi-hoc-tap" data-open-progress data-nav-target="progress">
             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M17.4 3.2h3.2v2.9a5.4 5.4 0 0 1-4.9 5.4 6.1 6.1 0 0 1-2.7 2.1V17h3.2v2H7.8v-2H11v-3.4a6.1 6.1 0 0 1-2.7-2.1 5.4 5.4 0 0 1-4.9-5.4V3.2h3.2V2.8h10.8v.4ZM5.4 5.1v1a3.4 3.4 0 0 0 1.9 3 7.1 7.1 0 0 1-.5-2.6V5.1H5.4Zm11.8 0v1.4c0 .9-.2 1.8-.5 2.6a3.4 3.4 0 0 0 1.9-3v-1h-1.4Z"/></svg>
             Thành tích
           </a>
-          <a href="#dang-nhap" data-open-auth>
+          <a href="#dang-nhap" data-open-auth data-nav-target="auth">
             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2.5a4.8 4.8 0 0 1 4.8 4.8c0 1.7-.9 3.2-2.2 4.1 2.9.9 5 3.2 5.6 6.1.2.9-.5 1.8-1.4 1.8H5.2c-.9 0-1.6-.9-1.4-1.8.6-2.9 2.7-5.2 5.6-6.1a4.8 4.8 0 0 1-2.2-4.1A4.8 4.8 0 0 1 12 2.5Zm0 2.2a2.6 2.6 0 1 0 0 5.2 2.6 2.6 0 0 0 0-5.2Zm0 8.5c-2.7 0-4.9 1.6-5.7 3.9h11.4c-.8-2.3-3-3.9-5.7-3.9Z"/></svg>
             Đăng nhập
           </a>
-          <a href="#huong-dan" data-open-guide>
+          <a href="#huong-dan" data-open-guide data-nav-target="guide">
             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-.9 14.8h1.8v1.8h-1.8v-1.8Zm.1-2.8c0-1.3.7-2 1.6-2.6.8-.5 1.4-.9 1.4-1.8 0-1-.8-1.6-1.9-1.6-1 0-1.8.5-2.5 1.2L8.5 7.8A5 5 0 0 1 12.4 6c2.4 0 4.1 1.3 4.1 3.4 0 1.8-1.1 2.6-2.2 3.3-.8.5-1.3.9-1.3 1.8v.5h-1.8V14Z"/></svg>
             Hướng dẫn
           </a>
@@ -49,11 +49,25 @@
         </div>
       </header>
 
-      <div class="board-content">
+      <div class="board-content" data-home-content>
         <section class="hero-center">
           <p class="eyebrow">Nền tảng học toán trực tuyến dành cho học sinh THCS</p>
           <h1 id="page-title">Chào mừng bạn đến với <span>Phiếu học tập Toán 6!</span></h1>
           <p>Học đúng trọng tâm, luyện tập mỗi ngày và tự kiểm tra kiến thức sau từng bài.</p>
+        </section>
+
+        <section id="video-mo-dau" class="intro-video-section intro-video-section--home" aria-labelledby="intro-video-title">
+          <div class="intro-video-copy">
+            <p class="section-kicker">Video giới thiệu</p>
+            <h2 id="intro-video-title">Giới thiệu trang web</h2>
+            <p>Xem video giới thiệu ngay trên trang chủ trước khi bắt đầu các phiếu học tập Toán 6.</p>
+          </div>
+          <div class="video-frame">
+            <video controls preload="metadata" playsinline>
+              <source src="assets/intro-video.mp4" type="video/mp4" />
+              Trình duyệt của bạn không hỗ trợ phát video.
+            </video>
+          </div>
         </section>
 
         <figure class="learning-cards-image" aria-label="Ba phần học chính">
@@ -103,20 +117,6 @@
           </div>
           <p class="progress-message" data-progress-message>Hãy mở bài học đầu tiên để bắt đầu chuỗi học tập.</p>
         </section>
-      </div>
-    </section>
-
-    <section id="video-mo-dau" class="intro-video-section" aria-labelledby="intro-video-title">
-      <div class="intro-video-copy">
-        <p class="section-kicker">Video giới thiệu</p>
-        <h2 id="intro-video-title">Giới thiệu trang web</h2>
-        <p>Xem video giới thiệu ngay trên trang chủ trước khi bắt đầu các phiếu học tập Toán 6.</p>
-      </div>
-      <div class="video-frame">
-        <video controls preload="metadata" playsinline>
-          <source src="assets/intro-video.mp4" type="video/mp4" />
-          Trình duyệt của bạn không hỗ trợ phát video.
-        </video>
       </div>
     </section>
 
@@ -181,12 +181,13 @@
       </div>
     </section>
 
-    <section id="danh-sach-bai" class="course-section" aria-labelledby="lessons-title">
+    <section id="danh-sach-bai" class="course-section" aria-labelledby="lessons-title" hidden>
       <div class="section-header">
         <div>
           <p class="section-kicker">Toán 6</p>
           <h2 id="lessons-title">Danh sách bài học</h2>
         </div>
+        <button class="section-back" type="button" data-show-home>Quay lại trang chủ</button>
         <div class="filter-bar">
           <label class="search-field" for="lesson-search">
             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M10.5 4a6.5 6.5 0 0 1 5.1 10.5l4.1 4.1-1.6 1.6-4.1-4.1A6.5 6.5 0 1 1 10.5 4Zm0 2.2a4.3 4.3 0 1 0 0 8.6 4.3 4.3 0 0 0 0-8.6Z"/></svg>
@@ -326,6 +327,7 @@
         </article>
       </div>
       <div class="guide-actions">
+        <button type="button" data-show-home>Quay lại trang chủ</button>
         <button type="button" data-open-auth>Đăng nhập</button>
         <a data-continue-link href="Toan6-Chuong1-Bai1/Toan6-Chuong1-Bai1.html">Bắt đầu học</a>
       </div>
