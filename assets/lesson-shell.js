@@ -406,6 +406,35 @@
     window.location.href = `mailto:${teacherEmail}?subject=${subject}&body=${body}`;
   }
 
+  function getAssessmentAnswerKeySource() {
+    const keys = Array.from(document.querySelectorAll("#part-c details.answer-key"));
+    if (!keys.length) return null;
+    return keys.find((key) => /đáp án.*hướng dẫn chấm/i.test(key.querySelector("summary")?.textContent || "")) || keys[keys.length - 1];
+  }
+
+  function renderAnswerKeyInResult() {
+    const result = document.getElementById("result");
+    const source = getAssessmentAnswerKeySource();
+    if (!result || !source) return;
+
+    result.querySelector(".result-answer-key")?.remove();
+    const answerKey = source.cloneNode(true);
+    answerKey.classList.remove("answer-key");
+    answerKey.classList.add("result-answer-key");
+    answerKey.open = true;
+    answerKey.querySelectorAll("[id]").forEach((element) => element.removeAttribute("id"));
+
+    const summary = answerKey.querySelector("summary");
+    if (summary) summary.textContent = "Đáp án và hướng dẫn chấm";
+
+    const reportPanel = result.querySelector(".assessment-report-panel");
+    if (reportPanel) {
+      result.insertBefore(answerKey, reportPanel);
+    } else {
+      result.append(answerKey);
+    }
+  }
+
   function ensureReportPanel() {
     let panel = document.querySelector(".assessment-report-panel");
     if (panel) return panel;
@@ -452,6 +481,7 @@
     if (record.id === lastSavedAssessmentId) return;
     lastSavedAssessmentId = record.id;
     const records = saveAssessmentRecord(record);
+    renderAnswerKeyInResult();
     renderReportPanel(record, records);
 
     if (record.id !== lastAutoEmailId) {

@@ -141,6 +141,31 @@
   opacity: 0.78;
 }
 
+details.answer-key {
+  display: none !important;
+}
+
+.result-answer-key {
+  background: #ffffff;
+  border: 1px solid var(--learning-cyan-line);
+  border-radius: 14px;
+  box-shadow: 0 10px 22px rgba(0, 83, 98, 0.08);
+  margin-top: 16px;
+  padding: 16px;
+}
+
+.result-answer-key summary {
+  color: var(--learning-cyan-dark);
+  cursor: pointer;
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 900;
+}
+
+.result-answer-key[open] summary {
+  margin-bottom: 12px;
+}
+
 .assessment-report-panel {
   background: #f4fdff;
   border: 1px solid var(--learning-cyan-line);
