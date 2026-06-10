@@ -1,0 +1,1709 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Toán 6 - Chương 1 - Bài 6: Lũy thừa với số mũ tự nhiên</title>
+  <link rel="stylesheet" href="../../../assets/lesson-shell.css" />
+  <script src="../../../assets/lesson-shell.js" defer></script>
+  <style>
+    :root {
+      --bg: #f3f6f1;
+      --surface: #ffffff;
+      --ink: #1f2d33;
+      --muted: #61727a;
+      --line: #d8dfd8;
+      --primary: #1f6f78;
+      --primary-dark: #164e55;
+      --accent: #bf5f2d;
+      --blue: #2e63a6;
+      --green: #1f7a45;
+      --yellow: #9a6500;
+      --red: #b13a31;
+      --soft-teal: #e5f2f0;
+      --soft-blue: #eaf1fb;
+      --soft-amber: #fff3d8;
+      --soft-red: #fdebed;
+      --soft-green: #e7f5ea;
+      --shadow: 0 18px 42px rgba(31, 45, 51, 0.1);
+      --radius: 8px;
+      font-family: Arial, "Helvetica Neue", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-weight: 700;
+      min-height: 42px;
+      padding: 10px 14px;
+    }
+
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid rgba(191, 95, 45, 0.28);
+      outline-offset: 2px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      line-height: 1.25;
+    }
+
+    h1 {
+      color: #143f46;
+      font-size: 2rem;
+      margin: 0 0 14px;
+    }
+
+    h2 {
+      color: #143f46;
+      font-size: 1.45rem;
+      margin-top: 0;
+    }
+
+    h3 {
+      color: #1b5159;
+      font-size: 1.12rem;
+      margin: 22px 0 10px;
+    }
+
+    h4 {
+      font-size: 1rem;
+      margin: 0 0 10px;
+    }
+
+    .app-shell {
+      margin: 0 auto;
+      max-width: 1120px;
+      padding: 24px;
+    }
+
+    .app-header {
+      background: linear-gradient(135deg, #ffffff 0%, #e8f4f2 54%, #fff2dc 100%);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .header-kicker {
+      color: var(--primary-dark);
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin: 0 0 6px;
+      text-transform: uppercase;
+    }
+
+    .header-summary {
+      color: var(--muted);
+      margin: 0;
+      max-width: 850px;
+    }
+
+    .meta-grid,
+    .form-grid,
+    .content-grid,
+    .practice-grid,
+    .pair-grid,
+    .triple-grid,
+    .result-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .meta-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      margin-top: 20px;
+    }
+
+    .meta-item,
+    .result-metric {
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 10px 12px;
+    }
+
+    .meta-label,
+    .result-metric span {
+      color: var(--muted);
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .meta-value,
+    .result-metric strong {
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .student-info,
+    .lesson-nav,
+    .part-panel,
+    .result-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 24px rgba(31, 45, 51, 0.06);
+      margin-top: 18px;
+    }
+
+    .student-info,
+    .part-panel,
+    .result-card {
+      padding: 22px;
+    }
+
+    .section-title {
+      align-items: center;
+      display: flex;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .section-title::before {
+      background: var(--accent);
+      border-radius: 999px;
+      content: "";
+      display: inline-block;
+      flex: 0 0 auto;
+      height: 12px;
+      width: 12px;
+    }
+
+    .form-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    label {
+      color: #2d3b40;
+      display: block;
+      font-weight: 700;
+    }
+
+    .field-label {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select,
+    textarea {
+      background: #fffefa;
+      border: 1px solid #cfd8d1;
+      border-radius: var(--radius);
+      color: var(--ink);
+      min-height: 42px;
+      padding: 10px 12px;
+      width: 100%;
+    }
+
+    textarea {
+      min-height: 96px;
+      resize: vertical;
+    }
+
+    .lesson-nav {
+      display: flex;
+      gap: 8px;
+      padding: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+
+    .tab-button {
+      background: transparent;
+      color: var(--primary-dark);
+      flex: 1;
+      min-width: 0;
+    }
+
+    .tab-button[aria-selected="true"] {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .part-panel,
+    .result-card {
+      display: none;
+    }
+
+    .part-panel.active,
+    .result-card.show {
+      display: block;
+    }
+
+    .lead-box,
+    .note-box,
+    .content-block,
+    .question-card,
+    .score-summary,
+    .formula-chip {
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+
+    .lead-box {
+      background: var(--soft-teal);
+      border-left: 5px solid var(--primary);
+      margin-bottom: 18px;
+    }
+
+    .note-box {
+      background: var(--soft-amber);
+      border-left: 5px solid #d09420;
+      margin: 16px 0;
+    }
+
+    .content-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .practice-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .pair-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 12px;
+    }
+
+    .triple-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 12px;
+    }
+
+    .content-block,
+    .formula-chip {
+      border: 1px solid var(--line);
+    }
+
+    .content-block ul,
+    .content-block ol,
+    .question-card ul,
+    .question-card ol {
+      padding-left: 22px;
+    }
+
+    .content-block li,
+    .question-card li {
+      margin: 7px 0;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    .symbol-table,
+    .score-table {
+      border-collapse: collapse;
+      margin: 12px 0 18px;
+      min-width: 620px;
+      width: 100%;
+    }
+
+    .symbol-table th,
+    .symbol-table td,
+    .score-table th,
+    .score-table td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      vertical-align: middle;
+    }
+
+    .symbol-table th,
+    .score-table th {
+      background: #edf5f3;
+      color: #173f46;
+      text-align: left;
+    }
+
+    .center-text {
+      text-align: center;
+    }
+
+    code,
+    .math-text {
+      background: #f1f5f5;
+      border-radius: 6px;
+      color: #132f35;
+      display: inline-block;
+      font-family: "Courier New", monospace;
+      padding: 2px 6px;
+    }
+
+    .example-steps {
+      background: var(--soft-blue);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+    }
+
+    .formula-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin: 12px 0 18px;
+    }
+
+    .formula-chip {
+      background: #fbfcfa;
+    }
+
+    .formula-chip strong {
+      color: #173f46;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .mind-map {
+      background: #fcfbf7;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin: 12px 0 18px;
+      padding: 16px;
+    }
+
+    .mind-map span {
+      background: #ffffff;
+      border: 1px solid #d9ded7;
+      border-radius: var(--radius);
+      color: #25353a;
+      font-weight: 700;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .question-card {
+      border: 1px solid var(--line);
+      margin: 14px 0;
+    }
+
+    .question-card:nth-of-type(odd) {
+      background: #ffffff;
+    }
+
+    .question-card:nth-of-type(even) {
+      background: #fbfcfa;
+    }
+
+    .question-head {
+      align-items: flex-start;
+      display: flex;
+      gap: 12px;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .question-title {
+      color: #183d44;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    .point-badge {
+      background: #f3e5cf;
+      border-radius: 999px;
+      color: #734214;
+      flex: 0 0 auto;
+      font-size: 0.85rem;
+      font-weight: 800;
+      padding: 4px 10px;
+    }
+
+    .choice-list {
+      display: grid;
+      gap: 8px;
+      margin: 12px 0;
+    }
+
+    .choice-list label {
+      align-items: center;
+      background: #fffefa;
+      border: 1px solid #d9ded7;
+      border-radius: var(--radius);
+      display: flex;
+      gap: 10px;
+      padding: 10px 12px;
+    }
+
+    .choice-list input {
+      flex: 0 0 auto;
+      height: 18px;
+      width: 18px;
+    }
+
+    .inline-answer {
+      align-items: end;
+      display: grid;
+      gap: 10px;
+      grid-template-columns: minmax(180px, 1fr) auto;
+      margin-top: 12px;
+    }
+
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .primary-action {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .primary-action:hover {
+      background: var(--primary-dark);
+    }
+
+    .secondary-action {
+      background: #e8ece9;
+      color: #24363b;
+    }
+
+    .secondary-action:hover {
+      background: #d8ded9;
+    }
+
+    .feedback-box {
+      border-radius: var(--radius);
+      display: none;
+      margin-top: 12px;
+      padding: 12px;
+    }
+
+    .feedback-box.show {
+      display: block;
+    }
+
+    .feedback-box.correct {
+      background: var(--soft-green);
+      border-left: 5px solid var(--green);
+      color: #15482b;
+    }
+
+    .feedback-box.partial {
+      background: var(--soft-amber);
+      border-left: 5px solid var(--yellow);
+      color: #5e3a00;
+    }
+
+    .feedback-box.incorrect {
+      background: var(--soft-red);
+      border-left: 5px solid var(--red);
+      color: #6b231d;
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 0.94rem;
+      margin-top: 8px;
+    }
+
+    .answer-key {
+      background: #f8faf8;
+      border: 1px dashed #c7d1ca;
+      border-radius: var(--radius);
+      color: #31413c;
+      margin-top: 12px;
+      padding: 10px 12px;
+    }
+
+    details.answer-key summary {
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .test-toolbar {
+      align-items: center;
+      background: #f8faf8;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+      margin: 16px 0;
+      padding: 14px;
+    }
+
+    .timer {
+      color: #294148;
+      font-weight: 800;
+    }
+
+    .score-summary {
+      background: var(--soft-blue);
+      border-left: 5px solid var(--blue);
+      margin-top: 12px;
+    }
+
+    .result-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 14px;
+    }
+
+    .result-metric strong {
+      color: #183d44;
+      font-size: 1.25rem;
+    }
+
+    .print-note,
+    .footer-note {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .footer-note {
+      margin: 18px 0 0;
+      text-align: center;
+    }
+
+    .chapter-navigation {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 24px rgba(31, 45, 51, 0.06);
+      margin-top: 18px;
+      padding: 18px;
+    }
+
+    .chapter-navigation-title {
+      color: #143f46;
+      font-size: 1.1rem;
+      margin: 0 0 12px;
+    }
+
+    .chapter-link-grid {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+    }
+
+    .chapter-link {
+      align-items: center;
+      background: #fffefa;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      color: var(--primary-dark);
+      display: flex;
+      font-weight: 800;
+      justify-content: center;
+      min-height: 42px;
+      padding: 9px 10px;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .chapter-link:hover {
+      background: var(--soft-blue);
+    }
+
+    .chapter-link.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+    }
+
+    @media (max-width: 820px) {
+      .app-shell {
+        padding: 14px;
+      }
+
+      .app-header,
+      .student-info,
+      .part-panel,
+      .result-card {
+        padding: 18px;
+      }
+
+      h1 {
+        font-size: 1.55rem;
+      }
+
+      .meta-grid,
+      .form-grid,
+      .content-grid,
+      .practice-grid,
+      .pair-grid,
+      .triple-grid,
+      .formula-grid,
+      .mind-map,
+      .result-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .lesson-nav {
+        overflow-x: auto;
+        position: static;
+      }
+
+      .tab-button {
+        flex: 0 0 170px;
+      }
+
+      .inline-answer {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+
+      .app-shell {
+        max-width: none;
+        padding: 0;
+      }
+
+      .lesson-nav,
+      .chapter-navigation,
+      .action-row,
+      button,
+      .print-note {
+        display: none !important;
+      }
+
+      .app-header,
+      .student-info,
+      .part-panel,
+      .question-card,
+      .result-card {
+        box-shadow: none;
+      }
+
+      .part-panel,
+      .part-panel.active,
+      .result-card.show,
+      .result-card.has-result {
+        display: block;
+      }
+
+      .question-card,
+      .content-block,
+      .result-card {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body data-lesson-id="bai-6">
+  <main id="app" class="app-shell">
+    <header id="header" class="app-header">
+      <p class="header-kicker">Phiếu học tập tương tác</p>
+      <h1>Toán 6 - Chương 1 - Bài 6: Lũy thừa với số mũ tự nhiên</h1>
+      <p class="header-summary">Nhận biết lũy thừa với số mũ tự nhiên, xác định cơ số và số mũ, tính giá trị lũy thừa, viết tích dưới dạng lũy thừa, viết số theo lũy thừa của 10 và vận dụng quy tắc nhân, chia hai lũy thừa cùng cơ số.</p>
+      <div class="meta-grid" aria-label="Thông tin bài học">
+        <div class="meta-item"><span class="meta-label">Môn</span><span class="meta-value">Toán</span></div>
+        <div class="meta-item"><span class="meta-label">Lớp</span><span class="meta-value">6</span></div>
+        <div class="meta-item"><span class="meta-label">Chương</span><span class="meta-value">1</span></div>
+        <div class="meta-item"><span class="meta-label">Bài</span><span class="meta-value">6</span></div>
+        <div class="meta-item"><span class="meta-label">Mã bài</span><span class="meta-value">Toan6-Chuong1-Bai6</span></div>
+      </div>
+    </header>
+
+    <section id="student-info" class="student-info" aria-labelledby="student-title">
+      <h2 id="student-title" class="section-title">Thông tin học sinh</h2>
+      <div class="form-grid">
+        <label>
+          <span class="field-label">Họ và tên</span>
+          <input id="student-name" data-save type="text" autocomplete="name" placeholder="Nhập họ và tên" />
+        </label>
+        <label>
+          <span class="field-label">Lớp</span>
+          <input id="student-class" data-save type="text" placeholder="Ví dụ: 6A" />
+        </label>
+        <label>
+          <span class="field-label">Mã bài/lần học</span>
+          <input id="student-code" data-save type="text" value="Toan6-Chuong1-Bai6" />
+        </label>
+      </div>
+    </section>
+
+    <nav id="lesson-nav" class="lesson-nav" aria-label="Điều hướng phiếu học tập">
+      <button class="tab-button" type="button" data-tab="part-a" aria-selected="true">A. Kiến thức</button>
+      <button class="tab-button" type="button" data-tab="part-b" aria-selected="false">B. Luyện tập</button>
+      <button class="tab-button" type="button" data-tab="part-c" aria-selected="false">C. Kiểm tra</button>
+      <button class="tab-button" type="button" data-tab="result" aria-selected="false">Kết quả</button>
+    </nav>
+
+    <section id="part-a" class="part-panel active" aria-labelledby="part-a-title">
+      <h2 id="part-a-title" class="section-title">Phần A - Kiến thức trọng tâm</h2>
+      <div class="lead-box">
+        <strong>Trọng tâm:</strong> Lũy thừa <span class="math-text">a^n</span> là tích của <span class="math-text">n</span> thừa số bằng nhau, mỗi thừa số bằng <span class="math-text">a</span>. Khi nhân hai lũy thừa cùng cơ số thì cộng số mũ; khi chia hai lũy thừa cùng cơ số khác <span class="math-text">0</span> thì trừ số mũ.
+      </div>
+
+      <div class="content-grid">
+        <article class="content-block">
+          <h3>1. Mục tiêu bài học</h3>
+          <ol>
+            <li>Hiểu được khái niệm lũy thừa với số mũ tự nhiên.</li>
+            <li>Xác định được cơ số và số mũ trong một lũy thừa.</li>
+            <li>Biết đọc, viết lũy thừa đúng cách.</li>
+            <li>Tính được giá trị của một số lũy thừa đơn giản.</li>
+            <li>Nhận biết được bình phương, lập phương của một số.</li>
+            <li>Vận dụng được quy tắc nhân, chia hai lũy thừa cùng cơ số.</li>
+          </ol>
+        </article>
+
+        <article class="content-block">
+          <h3>2. Ghi nhớ cốt lõi</h3>
+          <p><strong>Lũy thừa bậc <span class="math-text">n</span> của số tự nhiên <span class="math-text">a</span></strong> là tích của <span class="math-text">n</span> thừa số bằng nhau, mỗi thừa số bằng <span class="math-text">a</span>.</p>
+          <p><span class="math-text">a^n = a · a · ... · a</span></p>
+          <p>Trong đó có <span class="math-text">n</span> thừa số <span class="math-text">a</span>, với <span class="math-text">n ∈ N*</span>.</p>
+          <ul>
+            <li><span class="math-text">a</span> gọi là <strong>cơ số</strong>.</li>
+            <li><span class="math-text">n</span> gọi là <strong>số mũ</strong>.</li>
+          </ul>
+          <p>Ví dụ: <span class="math-text">3 · 3 · 3 · 3 · 3 = 3^5</span>, đọc là <strong>3 mũ 5</strong> hoặc <strong>lũy thừa bậc 5 của 3</strong>.</p>
+        </article>
+      </div>
+
+      <h3>3. Quy ước và tên gọi cần nhớ</h3>
+      <div class="table-wrap">
+        <table class="symbol-table">
+          <thead>
+            <tr>
+              <th>Nội dung</th>
+              <th>Ghi nhớ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="math-text">a^1</span></td><td><span class="math-text">a^1 = a</span></td></tr>
+            <tr><td><span class="math-text">a^0</span></td><td><span class="math-text">a^0 = 1</span>, với <span class="math-text">a ≠ 0</span></td></tr>
+            <tr><td><span class="math-text">a^2</span></td><td>Bình phương của <span class="math-text">a</span></td></tr>
+            <tr><td><span class="math-text">a^3</span></td><td>Lập phương của <span class="math-text">a</span></td></tr>
+            <tr><td><span class="math-text">10^n</span></td><td>Số gồm chữ số <span class="math-text">1</span> và <span class="math-text">n</span> chữ số <span class="math-text">0</span> phía sau</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="formula-grid">
+        <div class="formula-chip">
+          <strong>Ví dụ 1</strong>
+          <span class="math-text">7^1 = 7</span>
+        </div>
+        <div class="formula-chip">
+          <strong>Ví dụ 2</strong>
+          <span class="math-text">5^2 = 5 · 5 = 25</span>
+        </div>
+        <div class="formula-chip">
+          <strong>Ví dụ 3</strong>
+          <span class="math-text">4^3 = 4 · 4 · 4 = 64</span>
+        </div>
+      </div>
+
+      <h3>4. Lũy thừa của 10</h3>
+      <div class="content-grid">
+        <article class="content-block">
+          <p>Lũy thừa của <span class="math-text">10</span> giúp viết gọn các số có nhiều chữ số <span class="math-text">0</span>.</p>
+          <p><span class="math-text">10^n = 1 00...0</span></p>
+          <p>Trong đó có <span class="math-text">n</span> chữ số <span class="math-text">0</span> sau chữ số <span class="math-text">1</span>.</p>
+          <p>Ví dụ: <span class="math-text">345 = 3 · 10^2 + 4 · 10^1 + 5 · 10^0</span></p>
+        </article>
+        <div class="table-wrap">
+          <table class="symbol-table">
+            <thead>
+              <tr>
+                <th>Lũy thừa</th>
+                <th class="center-text">Giá trị</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="math-text">10^1</span></td><td class="center-text">10</td></tr>
+              <tr><td><span class="math-text">10^2</span></td><td class="center-text">100</td></tr>
+              <tr><td><span class="math-text">10^3</span></td><td class="center-text">1 000</td></tr>
+              <tr><td><span class="math-text">10^4</span></td><td class="center-text">10 000</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3>5. Nhân, chia hai lũy thừa cùng cơ số</h3>
+      <div class="formula-grid">
+        <div class="formula-chip">
+          <strong>Nhân cùng cơ số</strong>
+          <span class="math-text">a^m · a^n = a^(m+n)</span>
+        </div>
+        <div class="formula-chip">
+          <strong>Chia cùng cơ số</strong>
+          <span class="math-text">a^m : a^n = a^(m-n)</span>
+        </div>
+        <div class="formula-chip">
+          <strong>Điều kiện phép chia</strong>
+          <span class="math-text">a ≠ 0, m ≥ n</span>
+        </div>
+      </div>
+      <div class="content-grid">
+        <article class="content-block">
+          <h4>Ví dụ nhân</h4>
+          <p><span class="math-text">5^6 · 5^3 = 5^(6+3) = 5^9</span></p>
+        </article>
+        <article class="content-block">
+          <h4>Ví dụ chia</h4>
+          <p><span class="math-text">10^7 : 10^4 = 10^(7-4) = 10^3</span></p>
+        </article>
+      </div>
+
+      <h3>6. Ví dụ mẫu có hướng dẫn</h3>
+      <article class="content-block">
+        <p><strong>Đề bài:</strong> Viết kết quả dưới dạng một lũy thừa: <span class="math-text">7^6 · 7^4</span></p>
+        <ol class="example-steps">
+          <li>Nhận xét hai lũy thừa có cùng cơ số là <span class="math-text">7</span>.</li>
+          <li>Giữ nguyên cơ số <span class="math-text">7</span>.</li>
+          <li>Cộng hai số mũ: <span class="math-text">6 + 4 = 10</span>.</li>
+        </ol>
+        <p><strong>Đáp án:</strong> <span class="math-text">7^6 · 7^4 = 7^(6+4) = 7^10</span></p>
+      </article>
+
+      <h3>7. Sơ đồ tư duy mini</h3>
+      <div class="mind-map" aria-label="Sơ đồ tư duy bài 6">
+        <span>Lũy thừa: tích các thừa số bằng nhau</span>
+        <span>Cơ số: thừa số được lặp lại</span>
+        <span>Số mũ: số lần lặp lại</span>
+        <span>Bình phương: mũ 2</span>
+        <span>Lập phương: mũ 3</span>
+        <span>Nhân cùng cơ số: cộng số mũ</span>
+        <span>Chia cùng cơ số: trừ số mũ</span>
+      </div>
+
+      <h3>8. Tự kiểm tra nhanh</h3>
+      <article class="question-card">
+        <div class="question-head">
+          <p class="question-title">Câu 1. Viết tích <span class="math-text">2 · 2 · 2 · 2</span> dưới dạng lũy thừa.</p>
+        </div>
+        <div class="inline-answer">
+          <label><span class="field-label">Đáp án</span><input id="a-check-1" data-save type="text" placeholder="Ví dụ: 2^4" /></label>
+          <button class="primary-action" type="button" data-check-math="a-check-1" data-answers="2^4" data-feedback="a-feedback-1" data-correct="Đúng. 2 · 2 · 2 · 2 = 2^4." data-wrong="Em hãy lấy thừa số được lặp lại làm cơ số và đếm số lần lặp lại để tìm số mũ.">Kiểm tra</button>
+        </div>
+        <div id="a-feedback-1" class="feedback-box" aria-live="polite"></div>
+      </article>
+
+      <article class="question-card">
+        <div class="question-head">
+          <p class="question-title">Câu 2. Tính <span class="math-text">2^5</span>.</p>
+        </div>
+        <div class="inline-answer">
+          <label><span class="field-label">Giá trị</span><input id="a-check-2" data-save type="text" placeholder="Nhập kết quả" /></label>
+          <button class="primary-action" type="button" data-check-number="a-check-2" data-answer="32" data-feedback="a-feedback-2" data-correct="Đúng. 2^5 = 2 · 2 · 2 · 2 · 2 = 32." data-wrong="Em hãy nhân 5 thừa số 2 với nhau.">Kiểm tra</button>
+        </div>
+        <div id="a-feedback-2" class="feedback-box" aria-live="polite"></div>
+      </article>
+
+      <article class="question-card">
+        <div class="question-head">
+          <p class="question-title">Câu 3. Viết kết quả dưới dạng một lũy thừa: <span class="math-text">9^110 : 9^100</span>.</p>
+        </div>
+        <div class="inline-answer">
+          <label><span class="field-label">Đáp án</span><input id="a-check-3" data-save type="text" placeholder="Ví dụ: 9^10" /></label>
+          <button class="primary-action" type="button" data-check-math="a-check-3" data-answers="9^10|9^(110-100)" data-feedback="a-feedback-3" data-correct="Đúng. 9^110 : 9^100 = 9^(110-100) = 9^10." data-wrong="Em hãy giữ nguyên cơ số 9 và trừ hai số mũ: 110 - 100.">Kiểm tra</button>
+        </div>
+        <div id="a-feedback-3" class="feedback-box" aria-live="polite"></div>
+      </article>
+
+      <h3>9. Những lỗi học sinh dễ mắc</h3>
+      <article class="content-block">
+        <ul>
+          <li>Nhầm cơ số và số mũ.</li>
+          <li>Viết <span class="math-text">3^5</span> thành <span class="math-text">3 · 5</span>.</li>
+          <li>Tính sai bình phương và lập phương.</li>
+          <li>Khi nhân hai lũy thừa cùng cơ số lại nhân các số mũ.</li>
+          <li>Khi chia hai lũy thừa cùng cơ số lại chia các số mũ.</li>
+          <li>Quên điều kiện <span class="math-text">a ≠ 0, m ≥ n</span> khi chia hai lũy thừa cùng cơ số.</li>
+        </ul>
+      </article>
+
+      <div class="action-row">
+        <button class="primary-action" type="button" data-tab-jump="part-b">Sang phần luyện tập</button>
+      </div>
+    </section>
+
+    <section id="part-b" class="part-panel" aria-labelledby="part-b-title">
+      <h2 id="part-b-title" class="section-title">Phần B - Luyện tập</h2>
+      <div class="lead-box">
+        <strong>Mục đích:</strong> Củng cố kiến thức về lũy thừa, cơ số, số mũ, cách tính giá trị lũy thừa, lũy thừa của <span class="math-text">10</span> và quy tắc nhân, chia hai lũy thừa cùng cơ số.
+      </div>
+
+      <h3>1. Bảng kiến thức cần dùng</h3>
+      <div class="table-wrap">
+        <table class="symbol-table">
+          <thead>
+            <tr>
+              <th>Nội dung</th>
+              <th>Ý nghĩa / cách dùng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="math-text">a^n</span></td><td>Lũy thừa bậc <span class="math-text">n</span> của <span class="math-text">a</span></td></tr>
+            <tr><td><span class="math-text">a</span></td><td>Cơ số</td></tr>
+            <tr><td><span class="math-text">n</span></td><td>Số mũ</td></tr>
+            <tr><td><span class="math-text">a^1</span></td><td><span class="math-text">a^1 = a</span></td></tr>
+            <tr><td><span class="math-text">a^0</span></td><td><span class="math-text">a^0 = 1</span>, với <span class="math-text">a ≠ 0</span></td></tr>
+            <tr><td><span class="math-text">a^2</span></td><td>Bình phương của <span class="math-text">a</span></td></tr>
+            <tr><td><span class="math-text">a^3</span></td><td>Lập phương của <span class="math-text">a</span></td></tr>
+            <tr><td><span class="math-text">a^m · a^n</span></td><td><span class="math-text">a^(m+n)</span></td></tr>
+            <tr><td><span class="math-text">a^m : a^n</span></td><td><span class="math-text">a^(m-n)</span>, với <span class="math-text">a ≠ 0, m ≥ n</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>2. Bài tập viết tích dưới dạng lũy thừa</h3>
+      <p>Viết các tích sau dưới dạng lũy thừa.</p>
+      <div id="practice-products"></div>
+
+      <h3>3. Bài tập xác định cơ số và số mũ</h3>
+      <p>Xác định cơ số và số mũ trong mỗi lũy thừa sau.</p>
+      <div id="practice-base-exponent"></div>
+
+      <h3>4. Bài tập tính giá trị lũy thừa</h3>
+      <p>Tính giá trị các lũy thừa sau.</p>
+      <div id="practice-values"></div>
+
+      <h3>5. Bài tập nhân, chia hai lũy thừa cùng cơ số</h3>
+      <p>Viết kết quả dưới dạng một lũy thừa.</p>
+      <div id="practice-rules"></div>
+
+      <h3>6. Trò chơi: Ai là cơ số, ai là số mũ?</h3>
+      <p>Cho các lũy thừa sau: <span class="math-text">2^4</span>, <span class="math-text">6^3</span>, <span class="math-text">10^5</span>, <span class="math-text">a^7</span>. Hãy nêu cơ số và số mũ của từng lũy thừa.</p>
+      <div id="practice-game"></div>
+
+      <h3>7. Thử thách vận dụng</h3>
+      <article class="question-card">
+        <div class="question-head">
+          <p class="question-title">Viết số <span class="math-text">203 184</span> thành tổng giá trị các chữ số bằng lũy thừa của <span class="math-text">10</span>.</p>
+        </div>
+        <textarea id="practice-challenge" data-save placeholder="Nhập cách viết của em"></textarea>
+        <div class="action-row">
+          <button class="primary-action" type="button" data-check-math="practice-challenge" data-answers="203184=2·10^5+0·10^4+3·10^3+1·10^2+8·10^1+4·10^0|2·10^5+0·10^4+3·10^3+1·10^2+8·10^1+4·10^0" data-feedback="challenge-feedback" data-correct="Đúng. Em đã viết đúng theo tổng giá trị các chữ số bằng lũy thừa của 10." data-wrong="Em hãy tách từng chữ số theo hàng: trăm nghìn, chục nghìn, nghìn, trăm, chục, đơn vị.">Kiểm tra</button>
+        </div>
+        <div id="challenge-feedback" class="feedback-box" aria-live="polite"></div>
+        <details class="answer-key">
+          <summary>Đáp án gợi ý</summary>
+          <p><span class="math-text">203 184 = 2 · 10^5 + 0 · 10^4 + 3 · 10^3 + 1 · 10^2 + 8 · 10^1 + 4 · 10^0</span></p>
+        </details>
+      </article>
+
+      <h3>8. Gợi ý củng cố sau luyện tập</h3>
+      <article class="content-block">
+        <ul>
+          <li>Khi viết tích dưới dạng lũy thừa, cơ số là thừa số lặp lại.</li>
+          <li>Số mũ là số lần thừa số được lặp lại.</li>
+          <li><span class="math-text">a^2</span> đọc là bình phương của <span class="math-text">a</span>.</li>
+          <li><span class="math-text">a^3</span> đọc là lập phương của <span class="math-text">a</span>.</li>
+          <li>Khi nhân hai lũy thừa cùng cơ số, cộng các số mũ.</li>
+          <li>Khi chia hai lũy thừa cùng cơ số, trừ các số mũ.</li>
+        </ul>
+      </article>
+
+      <div class="action-row">
+        <button class="secondary-action" type="button" data-tab-jump="part-a">Quay lại kiến thức</button>
+        <button class="primary-action" type="button" data-tab-jump="part-c">Sang phần kiểm tra</button>
+      </div>
+    </section>
+
+    <section id="part-c" class="part-panel" aria-labelledby="part-c-title">
+      <h2 id="part-c-title" class="section-title">Phần C - Kiểm tra đánh giá</h2>
+      <div class="lead-box">
+        <strong>Kiểm tra cuối bài:</strong> Bài kiểm tra gồm trắc nghiệm, tự luận ngắn và vận dụng. Nội dung tập trung vào khái niệm lũy thừa, cơ số, số mũ, tính giá trị lũy thừa và nhân, chia hai lũy thừa cùng cơ số.
+      </div>
+
+      <h3>Thang điểm</h3>
+      <div class="table-wrap">
+        <table class="score-table">
+          <thead>
+            <tr>
+              <th>Phần</th>
+              <th class="center-text">Số câu</th>
+              <th class="center-text">Điểm</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Trắc nghiệm</td><td class="center-text">5 câu</td><td class="center-text">5 điểm</td></tr>
+            <tr><td>Tự luận</td><td class="center-text">2 câu</td><td class="center-text">4 điểm</td></tr>
+            <tr><td>Vận dụng</td><td class="center-text">1 câu</td><td class="center-text">1 điểm</td></tr>
+            <tr><th>Tổng</th><th class="center-text">8 câu</th><th class="center-text">10 điểm</th></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="test-toolbar">
+        <span class="timer">Thời gian thi: 15 phút</span>
+        <div class="action-row">
+          <button class="secondary-action" type="button" id="start-timer">Bắt đầu đếm giờ</button>
+          <button class="secondary-action" type="button" id="reset-timer">Đặt lại</button>
+          <span id="timer-display" class="timer" aria-live="polite">15:00</span>
+        </div>
+      </div>
+
+      <h3>1. Trắc nghiệm</h3>
+      <p>Khoanh tròn hoặc đánh dấu vào đáp án đúng.</p>
+      <div id="test-multiple-choice"></div>
+
+      <h3>2. Tự luận và vận dụng</h3>
+      <article class="question-card">
+        <div class="question-head">
+          <p class="question-title">Tự luận 1. Viết tích sau dưới dạng lũy thừa: <span class="math-text">3 · 3 · 3 · 3 · 3</span>.</p>
+          <span class="point-badge">2 điểm</span>
+        </div>
+        <textarea id="test-writing-1" data-save placeholder="Bài làm"></textarea>
+        <div class="inline-answer">
+          <label><span class="field-label">Kết quả rút gọn</span><input id="test-writing-1-answer" data-save type="text" placeholder="Ví dụ: 3^5" /></label>
+          <span class="hint">Hệ thống chấm theo ô kết quả rút gọn.</span>
+        </div>
+      </article>
+
+      <article class="question-card">
+        <div class="question-head">
+          <p class="question-title">Tự luận 2. Viết kết quả dưới dạng một lũy thừa: <span class="math-text">7^6 · 7^4</span>.</p>
+          <span class="point-badge">2 điểm</span>
+        </div>
+        <textarea id="test-writing-2" data-save placeholder="Bài làm"></textarea>
+        <div class="inline-answer">
+          <label><span class="field-label">Kết quả rút gọn</span><input id="test-writing-2-answer" data-save type="text" placeholder="Ví dụ: 7^10" /></label>
+          <span class="hint">Hệ thống chấm theo ô kết quả rút gọn.</span>
+        </div>
+      </article>
+
+      <article class="question-card">
+        <div class="question-head">
+          <p class="question-title">Vận dụng. Viết số <span class="math-text">345</span> thành tổng các lũy thừa của <span class="math-text">10</span>.</p>
+          <span class="point-badge">1 điểm</span>
+        </div>
+        <textarea id="test-application" data-save placeholder="Bài làm"></textarea>
+        <div class="inline-answer">
+          <label><span class="field-label">Biểu thức</span><input id="test-application-answer" data-save type="text" placeholder="Ví dụ: 345 = 3 · 10^2 + 4 · 10^1 + 5 · 10^0" /></label>
+          <span class="hint">Hệ thống chấm theo ô biểu thức.</span>
+        </div>
+      </article>
+
+      <details class="answer-key">
+        <summary>Đáp án và hướng dẫn chấm</summary>
+        <h4>Đáp án trắc nghiệm</h4>
+        <p>Câu 1: B; Câu 2: B; Câu 3: D; Câu 4: B; Câu 5: C.</p>
+        <h4>Đáp án tự luận và vận dụng</h4>
+        <ul>
+          <li>Tự luận 1: <span class="math-text">3 · 3 · 3 · 3 · 3 = 3^5</span> - 2 điểm.</li>
+          <li>Tự luận 2: <span class="math-text">7^6 · 7^4 = 7^(6+4) = 7^10</span> - 2 điểm.</li>
+          <li>Vận dụng: <span class="math-text">345 = 3 · 10^2 + 4 · 10^1 + 5 · 10^0</span> - 1 điểm.</li>
+        </ul>
+      </details>
+
+      <div class="action-row">
+        <button class="primary-action" type="button" id="submit-test">Nộp bài và xem kết quả</button>
+        <button class="secondary-action" type="button" id="reset-test">Làm lại phần kiểm tra</button>
+        <button class="secondary-action" type="button" id="print-work">In phiếu</button>
+      </div>
+    </section>
+
+    <section id="result" class="result-card" aria-labelledby="result-title">
+      <h2 id="result-title" class="section-title">Kết quả</h2>
+      <div id="result-content" class="score-summary">
+        Em hãy hoàn thành bài kiểm tra ở Phần C rồi bấm <strong>Nộp bài và xem kết quả</strong>.
+      </div>
+    </section>
+
+    <section class="chapter-navigation" aria-labelledby="chapter-navigation-title">
+      <h2 id="chapter-navigation-title" class="chapter-navigation-title">Điều hướng Chương 1</h2>
+      <div class="chapter-link-grid">
+        <a class="chapter-link" href="../Toan6-Chuong1-Bai1/Toan6-Chuong1-Bai1.html">Bài 1</a>
+        <a class="chapter-link" href="../Toan6-Chuong1-Bai2/Toan6-Chuong1-Bai2.html">Bài 2</a>
+        <a class="chapter-link" href="../Toan6-Chuong1-Bai3/Toan6-Chuong1-Bai3.html">Bài 3</a>
+        <a class="chapter-link" href="../Toan6-Chuong1-Bai4/Toan6-Chuong1-Bai4.html">Bài 4</a>
+        <a class="chapter-link" href="../Toan6-Chuong1-Bai5/Toan6-Chuong1-Bai5.html">Bài 5</a>
+        <a class="chapter-link active" href="../Toan6-Chuong1-Bai6/Toan6-Chuong1-Bai6.html" aria-current="page">Bài 6</a>
+        <a class="chapter-link" href="../Toan6-Chuong1-Bai7/Toan6-Chuong1-Bai7.html">Bài 7</a>
+        <a class="chapter-link" href="../Toan6-Chuong1-OnTap/Toan6-Chuong1-OnTap.html">Ôn tập</a>
+      </div>
+    </section>
+
+    <p class="footer-note">Nguồn nội dung: Bai6-PhanA.md, Bai6-PhanB.md, Bai6-PhanC.md.</p>
+  </main>
+
+  <script>
+    const storageKey = "toan6-chuong1-bai6-state";
+
+    const productPractice = [
+      {
+        id: "product-1",
+        prompt: "2 · 2 · 2 · 2",
+        answers: ["2^4"],
+        explanation: "2 · 2 · 2 · 2 = 2^4",
+        guide: "Em hãy lấy thừa số lặp lại làm cơ số và đếm số thừa số."
+      },
+      {
+        id: "product-2",
+        prompt: "3 · 3 · 3 · 3 · 3",
+        answers: ["3^5"],
+        explanation: "3 · 3 · 3 · 3 · 3 = 3^5",
+        guide: "Cơ số là 3. Số mũ bằng số lần 3 xuất hiện."
+      },
+      {
+        id: "product-3",
+        prompt: "7 · 7",
+        answers: ["7^2"],
+        explanation: "7 · 7 = 7^2",
+        guide: "Có hai thừa số 7 nên số mũ là 2."
+      },
+      {
+        id: "product-4",
+        prompt: "10 · 10 · 10",
+        answers: ["10^3"],
+        explanation: "10 · 10 · 10 = 10^3",
+        guide: "Cơ số là 10 và có 3 thừa số 10."
+      }
+    ];
+
+    const baseExponentPractice = [
+      {
+        id: "base-exp-1",
+        prompt: "5^3",
+        answers: ["5", "3"],
+        explanation: "Trong 5^3, cơ số là 5, số mũ là 3."
+      },
+      {
+        id: "base-exp-2",
+        prompt: "9^2",
+        answers: ["9", "2"],
+        explanation: "Trong 9^2, cơ số là 9, số mũ là 2."
+      },
+      {
+        id: "base-exp-3",
+        prompt: "10^4",
+        answers: ["10", "4"],
+        explanation: "Trong 10^4, cơ số là 10, số mũ là 4."
+      },
+      {
+        id: "base-exp-4",
+        prompt: "a^n",
+        answers: ["a", "n"],
+        explanation: "Trong a^n, cơ số là a, số mũ là n."
+      }
+    ];
+
+    const valuePractice = [
+      {
+        id: "value-1",
+        prompt: "2^5",
+        answer: "32",
+        explanation: "2^5 = 2 · 2 · 2 · 2 · 2 = 32",
+        guide: "Em hãy nhân 5 thừa số 2 với nhau."
+      },
+      {
+        id: "value-2",
+        prompt: "5^2",
+        answer: "25",
+        explanation: "5^2 = 5 · 5 = 25",
+        guide: "Bình phương của 5 là 5 nhân 5."
+      },
+      {
+        id: "value-3",
+        prompt: "4^3",
+        answer: "64",
+        explanation: "4^3 = 4 · 4 · 4 = 64",
+        guide: "Lập phương của 4 là tích của 3 thừa số 4."
+      },
+      {
+        id: "value-4",
+        prompt: "10^4",
+        answer: "10000",
+        explanation: "10^4 = 10 000",
+        guide: "10^4 là số 1 có 4 chữ số 0 phía sau."
+      }
+    ];
+
+    const rulePractice = [
+      {
+        id: "rule-1",
+        prompt: "5^6 · 5^3",
+        answers: ["5^9", "5^(6+3)"],
+        explanation: "5^6 · 5^3 = 5^(6+3) = 5^9",
+        guide: "Hai lũy thừa cùng cơ số 5 nên cộng hai số mũ."
+      },
+      {
+        id: "rule-2",
+        prompt: "7^6 · 7^4",
+        answers: ["7^10", "7^(6+4)"],
+        explanation: "7^6 · 7^4 = 7^(6+4) = 7^10",
+        guide: "Hai lũy thừa cùng cơ số 7 nên cộng hai số mũ."
+      },
+      {
+        id: "rule-3",
+        prompt: "10^7 : 10^4",
+        answers: ["10^3", "10^(7-4)"],
+        explanation: "10^7 : 10^4 = 10^(7-4) = 10^3",
+        guide: "Hai lũy thừa cùng cơ số 10 trong phép chia nên trừ hai số mũ."
+      },
+      {
+        id: "rule-4",
+        prompt: "9^110 : 9^100",
+        answers: ["9^10", "9^(110-100)"],
+        explanation: "9^110 : 9^100 = 9^(110-100) = 9^10",
+        guide: "Giữ cơ số 9 và tính 110 - 100."
+      }
+    ];
+
+    const gameItems = [
+      { id: "game-1", prompt: "2^4", answers: ["2", "4"], explanation: "2^4: cơ số 2, số mũ 4." },
+      { id: "game-2", prompt: "6^3", answers: ["6", "3"], explanation: "6^3: cơ số 6, số mũ 3." },
+      { id: "game-3", prompt: "10^5", answers: ["10", "5"], explanation: "10^5: cơ số 10, số mũ 5." },
+      { id: "game-4", prompt: "a^7", answers: ["a", "7"], explanation: "a^7: cơ số a, số mũ 7." }
+    ];
+
+    const testQuestions = [
+      {
+        id: "test-q1",
+        prompt: "Trong lũy thừa a^n, a được gọi là:",
+        options: { A: "Số mũ.", B: "Cơ số.", C: "Tích.", D: "Thương." },
+        answer: "B"
+      },
+      {
+        id: "test-q2",
+        prompt: "Trong lũy thừa 5^3, số mũ là:",
+        options: { A: "2", B: "3", C: "5", D: "8" },
+        answer: "B"
+      },
+      {
+        id: "test-q3",
+        prompt: "Giá trị của 2^5 là:",
+        options: { A: "10", B: "16", C: "25", D: "32" },
+        answer: "D"
+      },
+      {
+        id: "test-q4",
+        prompt: "Kết quả của 5^6 · 5^3 là:",
+        options: { A: "5^18", B: "5^9", C: "25^9", D: "10^9" },
+        answer: "B"
+      },
+      {
+        id: "test-q5",
+        prompt: "Kết quả của 10^7 : 10^4 là:",
+        options: { A: "10^11", B: "10^4", C: "10^3", D: "10^28" },
+        answer: "C"
+      }
+    ];
+
+    function escapeHtml(value) {
+      return String(value || "").replace(/[&<>"']/g, (character) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      }[character]));
+    }
+
+    function normalizeNumber(value) {
+      return String(value || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^\d-]/g, "");
+    }
+
+    function normalizeMath(value) {
+      const superscripts = {
+        "⁰": "^0",
+        "¹": "^1",
+        "²": "^2",
+        "³": "^3",
+        "⁴": "^4",
+        "⁵": "^5",
+        "⁶": "^6",
+        "⁷": "^7",
+        "⁸": "^8",
+        "⁹": "^9"
+      };
+      return String(value || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g, (digit) => superscripts[digit])
+        .toLowerCase()
+        .replace(/mu/g, "^")
+        .replace(/[×x*]/g, "·")
+        .replace(/[−–—]/g, "-")
+        .replace(/\s+/g, "")
+        .replace(/\./g, "·")
+        .replace(/,/g, "")
+        .replace(/\+/g, "+")
+        .replace(/\^\^/g, "^");
+    }
+
+    function setFeedback(id, type, message) {
+      const box = document.getElementById(id);
+      if (!box) return;
+      box.className = `feedback-box show ${type}`;
+      box.innerHTML = message;
+    }
+
+    function isMathAccepted(value, answers) {
+      const normalized = normalizeMath(value);
+      return answers.some((answer) => {
+        const expected = normalizeMath(answer);
+        return normalized === expected || normalized.endsWith(`=${expected}`);
+      });
+    }
+
+    function countCorrectPair(id, answers) {
+      const baseField = document.getElementById(`${id}-base`);
+      const exponentField = document.getElementById(`${id}-exponent`);
+      let count = 0;
+      if (baseField && normalizeMath(baseField.value) === normalizeMath(answers[0])) count += 1;
+      if (exponentField && normalizeMath(exponentField.value) === normalizeMath(answers[1])) count += 1;
+      return count;
+    }
+
+    function renderMathPractice(rootId, items, labelText) {
+      const root = document.getElementById(rootId);
+      root.innerHTML = items.map((item, index) => `
+        <article class="question-card">
+          <div class="question-head">
+            <p class="question-title">Câu ${index + 1}. <span class="math-text">${escapeHtml(item.prompt)}</span></p>
+          </div>
+          <div class="inline-answer">
+            <label>
+              <span class="field-label">${escapeHtml(labelText)}</span>
+              <input id="${item.id}" data-save type="text" placeholder="Nhập đáp án" />
+            </label>
+            <button class="primary-action" type="button" data-practice-math="${item.id}">Kiểm tra</button>
+          </div>
+          <div id="${item.id}-feedback" class="feedback-box" aria-live="polite"></div>
+          <details class="answer-key">
+            <summary>Đáp án gợi ý</summary>
+            <p><span class="math-text">${escapeHtml(item.explanation)}</span></p>
+          </details>
+        </article>
+      `).join("");
+    }
+
+    function renderNumberPractice(rootId, items) {
+      const root = document.getElementById(rootId);
+      root.innerHTML = items.map((item, index) => `
+        <article class="question-card">
+          <div class="question-head">
+            <p class="question-title">Câu ${index + 1}. <span class="math-text">${escapeHtml(item.prompt)}</span></p>
+          </div>
+          <div class="inline-answer">
+            <label>
+              <span class="field-label">Giá trị</span>
+              <input id="${item.id}" data-save type="text" placeholder="Nhập kết quả" />
+            </label>
+            <button class="primary-action" type="button" data-practice-number="${item.id}">Kiểm tra</button>
+          </div>
+          <div id="${item.id}-feedback" class="feedback-box" aria-live="polite"></div>
+          <details class="answer-key">
+            <summary>Đáp án gợi ý</summary>
+            <p><span class="math-text">${escapeHtml(item.explanation)}</span></p>
+          </details>
+        </article>
+      `).join("");
+    }
+
+    function renderPairPractice(rootId, items) {
+      const root = document.getElementById(rootId);
+      root.innerHTML = items.map((item, index) => `
+        <article class="question-card">
+          <div class="question-head">
+            <p class="question-title">Câu ${index + 1}. <span class="math-text">${escapeHtml(item.prompt)}</span></p>
+          </div>
+          <div class="pair-grid">
+            <label>
+              <span class="field-label">Cơ số</span>
+              <input id="${item.id}-base" data-save type="text" placeholder="..." />
+            </label>
+            <label>
+              <span class="field-label">Số mũ</span>
+              <input id="${item.id}-exponent" data-save type="text" placeholder="..." />
+            </label>
+          </div>
+          <div class="action-row">
+            <button class="primary-action" type="button" data-practice-pair="${item.id}">Kiểm tra</button>
+          </div>
+          <div id="${item.id}-feedback" class="feedback-box" aria-live="polite"></div>
+          <details class="answer-key">
+            <summary>Đáp án gợi ý</summary>
+            <p>${escapeHtml(item.explanation)}</p>
+          </details>
+        </article>
+      `).join("");
+    }
+
+    function renderTestQuestions() {
+      const root = document.getElementById("test-multiple-choice");
+      root.innerHTML = testQuestions.map((item, index) => `
+        <article class="question-card">
+          <div class="question-head">
+            <p class="question-title">Câu ${index + 1}. ${escapeHtml(item.prompt)}</p>
+            <span class="point-badge">1 điểm</span>
+          </div>
+          <div class="choice-list">
+            ${Object.entries(item.options).map(([key, text]) => `
+              <label>
+                <input id="${item.id}-${key}" type="radio" name="${item.id}" value="${key}" />
+                <span>${escapeHtml(key)}. ${escapeHtml(text)}</span>
+              </label>
+            `).join("")}
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function saveState() {
+      const data = {};
+      document.querySelectorAll("[data-save]").forEach((field) => {
+        data[field.id] = field.value;
+      });
+      document.querySelectorAll("input[type='radio']").forEach((field) => {
+        if (field.checked) data[field.name] = field.value;
+      });
+      localStorage.setItem(storageKey, JSON.stringify(data));
+    }
+
+    function restoreState() {
+      try {
+        const data = JSON.parse(localStorage.getItem(storageKey) || "{}");
+        Object.entries(data).forEach(([id, value]) => {
+          const field = document.getElementById(id);
+          if (field && field.matches("[data-save]")) field.value = value;
+          const radio = document.querySelector(`input[type="radio"][name="${id}"][value="${value}"]`);
+          if (radio) radio.checked = true;
+        });
+      } catch (error) {
+        localStorage.removeItem(storageKey);
+      }
+    }
+
+    function bindStateSaving() {
+      document.querySelectorAll("[data-save], input[type='radio']").forEach((field) => {
+        field.addEventListener("input", saveState);
+        field.addEventListener("change", saveState);
+      });
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll(".tab-button").forEach((button) => {
+        button.setAttribute("aria-selected", String(button.dataset.tab === tabId));
+      });
+      document.querySelectorAll(".part-panel").forEach((panel) => {
+        panel.classList.toggle("active", panel.id === tabId);
+      });
+      document.getElementById("result").classList.toggle("show", tabId === "result");
+      const target = document.getElementById(tabId);
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function checkDirectMath(button) {
+      const field = document.getElementById(button.dataset.checkMath);
+      const answers = button.dataset.answers.split("|");
+      const correct = isMathAccepted(field.value, answers);
+      setFeedback(
+        button.dataset.feedback,
+        correct ? "correct" : "incorrect",
+        correct ? button.dataset.correct : button.dataset.wrong
+      );
+    }
+
+    function checkDirectNumber(button) {
+      const field = document.getElementById(button.dataset.checkNumber);
+      const correct = normalizeNumber(field.value) === normalizeNumber(button.dataset.answer);
+      setFeedback(
+        button.dataset.feedback,
+        correct ? "correct" : "incorrect",
+        correct ? button.dataset.correct : button.dataset.wrong
+      );
+    }
+
+    function checkPracticeMath(id) {
+      const item = productPractice.concat(rulePractice).find((entry) => entry.id === id);
+      const field = document.getElementById(id);
+      const correct = item && isMathAccepted(field.value, item.answers);
+      setFeedback(
+        `${id}-feedback`,
+        correct ? "correct" : "incorrect",
+        correct ? `Đúng. ${item.explanation}.` : item.guide
+      );
+    }
+
+    function checkPracticeNumber(id) {
+      const item = valuePractice.find((entry) => entry.id === id);
+      const field = document.getElementById(id);
+      const correct = item && normalizeNumber(field.value) === normalizeNumber(item.answer);
+      setFeedback(
+        `${id}-feedback`,
+        correct ? "correct" : "incorrect",
+        correct ? `Đúng. ${item.explanation}.` : item.guide
+      );
+    }
+
+    function checkPracticePair(id) {
+      const item = baseExponentPractice.concat(gameItems).find((entry) => entry.id === id);
+      const correctCount = countCorrectPair(id, item.answers);
+      const status = correctCount === 2 ? "correct" : correctCount === 1 ? "partial" : "incorrect";
+      const message = correctCount === 2
+        ? `Đúng. ${item.explanation}`
+        : `Em đúng ${correctCount}/2 ý. Hãy nhớ: trong a^n, a là cơ số và n là số mũ.`;
+      setFeedback(`${id}-feedback`, status, message);
+    }
+
+    function calculateTest() {
+      let multipleChoiceScore = 0;
+      testQuestions.forEach((question) => {
+        const selected = document.querySelector(`input[name="${question.id}"]:checked`);
+        if (selected && selected.value === question.answer) {
+          multipleChoiceScore += 1;
+        }
+      });
+
+      let writingScore = 0;
+      if (isMathAccepted(document.getElementById("test-writing-1-answer").value, ["3^5"])) writingScore += 2;
+      if (isMathAccepted(document.getElementById("test-writing-2-answer").value, ["7^10", "7^(6+4)"])) writingScore += 2;
+
+      const applicationScore = isMathAccepted(
+        document.getElementById("test-application-answer").value,
+        ["345=3·10^2+4·10^1+5·10^0", "3·10^2+4·10^1+5·10^0"]
+      ) ? 1 : 0;
+
+      const total = multipleChoiceScore + writingScore + applicationScore;
+      return { multipleChoiceScore, writingScore, applicationScore, total };
+    }
+
+    function commentForScore(score) {
+      if (score >= 9) return "Em nắm bài rất tốt.";
+      if (score >= 7) return "Em hiểu bài, cần luyện thêm nhân, chia hai lũy thừa cùng cơ số.";
+      if (score >= 5) return "Em cần xem lại cơ số, số mũ và cách tính giá trị lũy thừa.";
+      return "Em cần ôn lại kiến thức trọng tâm về lũy thừa với số mũ tự nhiên.";
+    }
+
+    function submitTest() {
+      const result = calculateTest();
+      const name = document.getElementById("student-name").value || "Chưa nhập";
+      const className = document.getElementById("student-class").value || "Chưa nhập";
+      const code = document.getElementById("student-code").value || "Toan6-Chuong1-Bai6";
+      const resultCard = document.getElementById("result");
+
+      document.getElementById("result-content").innerHTML = `
+        <p><strong>Học sinh:</strong> ${escapeHtml(name)} &nbsp; | &nbsp; <strong>Lớp:</strong> ${escapeHtml(className)} &nbsp; | &nbsp; <strong>Mã bài:</strong> ${escapeHtml(code)}</p>
+        <div class="result-grid">
+          <div class="result-metric"><span>Trắc nghiệm</span><strong>${result.multipleChoiceScore}/5</strong></div>
+          <div class="result-metric"><span>Tự luận</span><strong>${result.writingScore}/4</strong></div>
+          <div class="result-metric"><span>Vận dụng</span><strong>${result.applicationScore}/1</strong></div>
+          <div class="result-metric"><span>Tổng điểm</span><strong>${result.total}/10</strong></div>
+        </div>
+        <p><strong>Nhận xét:</strong> ${commentForScore(result.total)}</p>
+        <p class="print-note">Có thể bấm nút in để lưu hoặc nộp kết quả theo yêu cầu của giáo viên.</p>
+        <div class="action-row">
+          <button class="primary-action" type="button" onclick="window.print()">In kết quả</button>
+        </div>
+      `;
+      resultCard.classList.add("has-result");
+      switchTab("result");
+      saveState();
+    }
+
+    function resetTest() {
+      document.querySelectorAll("#part-c input[type='radio']").forEach((field) => {
+        field.checked = false;
+      });
+      document.querySelectorAll("#part-c input[type='text'], #part-c textarea").forEach((field) => {
+        field.value = "";
+      });
+      document.getElementById("result-content").innerHTML = "Em hãy hoàn thành bài kiểm tra ở Phần C rồi bấm <strong>Nộp bài và xem kết quả</strong>.";
+      saveState();
+    }
+
+    let timerId = null;
+    let remainingSeconds = 15 * 60;
+
+    function updateTimerDisplay() {
+      const minutes = String(Math.floor(remainingSeconds / 60)).padStart(2, "0");
+      const seconds = String(remainingSeconds % 60).padStart(2, "0");
+      document.getElementById("timer-display").textContent = `${minutes}:${seconds}`;
+    }
+
+    function startTimer() {
+      if (timerId) return;
+      timerId = window.setInterval(() => {
+        remainingSeconds = Math.max(remainingSeconds - 1, 0);
+        updateTimerDisplay();
+        if (remainingSeconds === 0) {
+          window.clearInterval(timerId);
+          timerId = null;
+          document.getElementById("timer-display").textContent = "Hết giờ";
+        }
+      }, 1000);
+    }
+
+    function resetTimer() {
+      if (timerId) window.clearInterval(timerId);
+      timerId = null;
+      remainingSeconds = 15 * 60;
+      updateTimerDisplay();
+    }
+
+    renderMathPractice("practice-products", productPractice, "Dạng lũy thừa");
+    renderPairPractice("practice-base-exponent", baseExponentPractice);
+    renderNumberPractice("practice-values", valuePractice);
+    renderMathPractice("practice-rules", rulePractice, "Kết quả");
+    renderPairPractice("practice-game", gameItems);
+    renderTestQuestions();
+    restoreState();
+    bindStateSaving();
+    updateTimerDisplay();
+
+    document.querySelectorAll(".tab-button").forEach((button) => {
+      button.addEventListener("click", () => switchTab(button.dataset.tab));
+    });
+
+    document.querySelectorAll("[data-tab-jump]").forEach((button) => {
+      button.addEventListener("click", () => switchTab(button.dataset.tabJump));
+    });
+
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLElement)) return;
+
+      if (target.dataset.checkMath) checkDirectMath(target);
+      if (target.dataset.checkNumber) checkDirectNumber(target);
+      if (target.dataset.practiceMath) checkPracticeMath(target.dataset.practiceMath);
+      if (target.dataset.practiceNumber) checkPracticeNumber(target.dataset.practiceNumber);
+      if (target.dataset.practicePair) checkPracticePair(target.dataset.practicePair);
+    });
+
+    document.getElementById("submit-test").addEventListener("click", submitTest);
+    document.getElementById("reset-test").addEventListener("click", resetTest);
+    document.getElementById("print-work").addEventListener("click", () => window.print());
+    document.getElementById("start-timer").addEventListener("click", startTimer);
+    document.getElementById("reset-timer").addEventListener("click", resetTimer);
+  </script>
+</body>
+</html>
