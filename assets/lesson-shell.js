@@ -67,6 +67,8 @@
   const scriptUrl = document.currentScript && document.currentScript.src ? document.currentScript.src : "";
   const homeHref = getHomeHref();
   let assessmentStartedAt = null;
+  let lastSavedAssessmentId = "";
+  let lastAutoEmailId = "";
 
   function getHomeHref() {
     if (!scriptUrl) return "../index.html";
@@ -425,7 +427,7 @@
     title.textContent = "Thống kê kết quả gửi giáo viên";
 
     const summary = document.createElement("p");
-    summary.textContent = `Đã lưu kết quả ${record.score}/10 của ${record.student_name}. Bấm gửi email để mở thư gửi đến ${teacherEmail}.`;
+    summary.textContent = `Đã tự lưu kết quả ${record.score}/10 của ${record.student_name}. Hệ thống tự mở email gửi thống kê đến ${teacherEmail}; nếu email chưa mở, bấm lại nút bên dưới.`;
 
     const actions = document.createElement("div");
     actions.className = "assessment-report-actions";
@@ -437,7 +439,7 @@
 
     const emailButton = document.createElement("button");
     emailButton.type = "button";
-    emailButton.textContent = "Gửi kết quả qua email";
+    emailButton.textContent = "Mở lại email gửi giáo viên";
     emailButton.addEventListener("click", () => openTeacherEmail(record));
 
     actions.append(downloadButton, emailButton);
@@ -447,8 +449,15 @@
   function handleAssessmentSubmitted(current) {
     const record = buildAssessmentRecord(current);
     if (!record) return;
+    if (record.id === lastSavedAssessmentId) return;
+    lastSavedAssessmentId = record.id;
     const records = saveAssessmentRecord(record);
     renderReportPanel(record, records);
+
+    if (record.id !== lastAutoEmailId) {
+      lastAutoEmailId = record.id;
+      window.setTimeout(() => openTeacherEmail(record), 120);
+    }
   }
 
   function bindAssessmentReporting(current) {
