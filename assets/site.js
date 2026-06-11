@@ -38,6 +38,22 @@
   const authForms = Array.from(document.querySelectorAll("[data-auth-form]"));
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+  function consumeGuestLink() {
+    const params = new URLSearchParams(window.location.search);
+    const shouldOpenAsGuest = params.get("guest") === "1" || params.get("logout") === "1";
+    if (!shouldOpenAsGuest) return false;
+
+    localStorage.removeItem(currentAccountKey);
+    sessionStorage.removeItem(openAuthRequestKey);
+    params.delete("guest");
+    params.delete("logout");
+
+    const cleanSearch = params.toString();
+    const cleanUrl = `${window.location.pathname}${cleanSearch ? `?${cleanSearch}` : ""}${window.location.hash}`;
+    window.history.replaceState(null, "", cleanUrl);
+    return true;
+  }
+
   function readJson(key, fallback) {
     try {
       const raw = localStorage.getItem(key);
@@ -550,6 +566,7 @@
   if (typeSelect) typeSelect.addEventListener("change", updateCards);
   if (chapterSelect) chapterSelect.addEventListener("change", updateCards);
 
+  consumeGuestLink();
   applyUserState();
   updateCards();
 
